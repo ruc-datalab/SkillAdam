@@ -1,0 +1,3 @@
+# SkillAdam core has no mandatory third-party runtime dependencies.
+# Install audited benchmark/runtime extras from pyproject.toml as documented
+# in README.md, for example: python -m pip install -e '.[deepplanning]'

@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "profile_id": "paper-main-results-v1",
+  "provenance": "archived_formal_runs",
+  "shared_files": {
+    "skilladam/core/prompts/iteration_system_prompt.md": "4c198ae001caa8143022a24f6681fae6f3c62b814d3c1b26bfd6c9838bd88c69",
+    "skilladam/core/prompts/momentum_update_system.md": "206470626cd2ca5458f249a5a2407687649a4c4805493e388eddffe43df42725",
+    "skilladam/core/prompts/skill_writing_policy.md": "3e4226f71da3b1cf87b6dcdc58e579e7e81796cc5fd6f34a690050113c7e0c4a",
+    "skilladam/core/prompts/stage0_system_prompt.md": "2775659613f57d0cc16d7a0d167d31b2710d53105e09874cd13b86d224fdc45e",
+    "skilladam/core/prompts/stage0_user_prompt.md": "0312c960abdb17eeab5220b004962c34ade3e633352ea4104a9d5ac3157bb789",
+    "skilladam/core/prompts/trajectory_compress_system.md": "7b43502e6d781a46fcda04f6d5fa42831cdc26c221ab136cd55cf83175530fc0"
+  },
+  "skillopt_benchmark_files": {
+    "skilladam/baselines/skillopt/prompts/benchmarks/alfworld/analyst_error.md": "b8747f41bf2b9535b852e93b74eda268ff260591b982e82c4f068e9cab4c3b8c",
+    "skilladam/baselines/skillopt/prompts/benchmarks/alfworld/analyst_success.md": "1cf47b94ecca52109cbe813f7f35661c4f6ff5db1067c944a3c2e2d2467501b6",
+    "skilladam/baselines/skillopt/prompts/benchmarks/docvqa/analyst_error.md": "29ff71f094b66472b015a4dabc68a3d5d77e9e72a086f9e09b74643c237bdb54",
+    "skilladam/baselines/skillopt/prompts/benchmarks/docvqa/analyst_success.md": "71052e02f76ad03b3e1755c88dfb2932fd69fe27326be0afd5e09c2cf1d2654b",
+    "skilladam/baselines/skillopt/prompts/benchmarks/lmb/analyst_error.md": "9cd5e3449b9013fb67b6dec930486bd8c23c7128f2746f97a1ca29b07b178150",
+    "skilladam/baselines/skillopt/prompts/benchmarks/lmb/analyst_success.md": "42619d41000d16b7e5194e5dd09ba67fcd65d1c5ae8b04b4097c38e45a02750d",
+    "skilladam/baselines/skillopt/prompts/benchmarks/officeqa/analyst_error.md": "7e29d2009757776fe02e1d5278bd4f3aae541e15af47bbaadf71d34bfe92073e",
+    "skilladam/baselines/skillopt/prompts/benchmarks/officeqa/analyst_success.md": "5569d91461e70e04eaa9e362b6cd0de1f95294b0cbf1f0ef00f923d2c9143195",
+    "skilladam/baselines/skillopt/prompts/benchmarks/searchqa/analyst_error.md": "ac58184f03e2198244ace28a9339674256061a62433787aed358954e6a031a19",
+    "skilladam/baselines/skillopt/prompts/benchmarks/searchqa/analyst_success.md": "0a169f33a141ed544b460d3f800f9dd2da28450d42b93556a3656cf8a45f0322",
+    "skilladam/baselines/skillopt/prompts/benchmarks/spreadsheetbench/analyst_error.md": "2e5aeb30856529ff39e40c84483a55971744f9c97fdb679b98e07bcebd668839",
+    "skilladam/baselines/skillopt/prompts/benchmarks/spreadsheetbench/analyst_success.md": "6c71d691286275f8cf775a5517e16d705bd31d2b4bce6b4136b59a7a9ba3abf2"
+  },
+  "benchmarks": {
+    "alfworld": {
+      "main_result_files": [
+        "skilladam/benchmarks/alfworld/prompts/failure_types.md",
+        "skilladam/benchmarks/alfworld/prompts/iteration_example.md",
+        "skilladam/benchmarks/alfworld/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/alfworld/prompts/skill_writing_policy.md",
+        "skilladam/benchmarks/alfworld/prompts/stage0_example.md",
+        "skilladam/benchmarks/alfworld/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/alfworld/prompts/stage0_system_prompt.md",
+        "skilladam/benchmarks/alfworld/prompts/success_types.md",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_compress_example.md",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_compress_system.md",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/alfworld/prompts/failure_types.md": "284f3c3d8ba32aa0d5093df96f3941bf160961168da22c4f7e1b94d883e55bf7",
+        "skilladam/benchmarks/alfworld/prompts/iteration_example.md": "dc4b19e3b68da12abadc5426c5e252b07c9370c4110954b7fc71d00bdad83528",
+        "skilladam/benchmarks/alfworld/prompts/metric_interpretation.md": "b69d2b4141af6f2b3b23a23f0e29ca1deb11b6c9c313afe39bdecbfb0ddbbea0",
+        "skilladam/benchmarks/alfworld/prompts/skill_writing_policy.md": "017851f7fda734c146772ee7636e0e53be4fd361e2d08099263a4bc388dd9b34",
+        "skilladam/benchmarks/alfworld/prompts/stage0_example.md": "566b1d01971f3a69be326a63b28cb77ea27ef2099f35d90ed44f0a6458897995",
+        "skilladam/benchmarks/alfworld/prompts/stage0_extra_section.md": "12468a245ad468cf5944de12d5311a341396e4a57621d334bc137fc9bc6c33af",
+        "skilladam/benchmarks/alfworld/prompts/stage0_system_prompt.md": "a4f8a81cf7bb46925b68d6476a26b7239ea1573ae110660511c63cae16c6524a",
+        "skilladam/benchmarks/alfworld/prompts/success_types.md": "1727a06f4d2a65ea281293af9b656a7b7c2a719786b777d16848e3393cf0d191",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_compress_example.md": "dc097615b2c01d6ac653ee1eb23c256fc5d97c5b40f93ba4c738bc448631b834",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_compress_system.md": "230bc2822940f39389a87435317e16c7db081a6369a5f17491ab9a7852cab956",
+        "skilladam/benchmarks/alfworld/prompts/trajectory_label_format.md": "85fc0dc93159a9d8e6e2e8f47b4122c97c721e23d36133c5e9eeb8ecac9cfe81"
+      }
+    },
+    "deepplanning": {
+      "main_result_files": [
+        "skilladam/benchmarks/deepplanning/prompts/failure_types.md",
+        "skilladam/benchmarks/deepplanning/prompts/iteration_example_v2.md",
+        "skilladam/benchmarks/deepplanning/prompts/iteration_system_prompt_v2_r2_baseline.md",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level1.md",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level2.md",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level3.md",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_travel_en.md",
+        "skilladam/benchmarks/deepplanning/prompts/skill_writing_policy_v2_r2_baseline.md",
+        "skilladam/benchmarks/deepplanning/prompts/stage0_example.md",
+        "skilladam/benchmarks/deepplanning/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/deepplanning/prompts/success_types.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_compress_example_shopping.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_compress_example_travel.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level1.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level2.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level3.md",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_travel_en.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/deepplanning/prompts/failure_types.md": "ac3b5732c362f28fd5154e3f7e1535e275192137fdcde92b175c35aacfe06396",
+        "skilladam/benchmarks/deepplanning/prompts/iteration_example.md": "651b02a7a9059d1a258d3405ad3ac534e50d38b0a777763a7dc1af6712299b29",
+        "skilladam/benchmarks/deepplanning/prompts/iteration_example_v2.md": "65cc5d78a81d62cee8ea7e1f2bedb501245f735bc133a1e53d4d62fe2da2d988",
+        "skilladam/benchmarks/deepplanning/prompts/iteration_system_prompt_v2_r2_baseline.md": "795c21063fdbb94fada44878491e94f6410c5933fe73f3765808c8bf9ae26c64",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation.md": "7694a60de3f46fe0b635a50ca500e86976052942265c0f0229afcb742f7a5018",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level1.md": "9645b995524799f9fd14c839b27b8ee6af919103e0bacaaf00872b4953346c09",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level2.md": "0e14e72ec1b0a0ab7389ac9c9eeaea57ba0f4dc77f07f85d4bfd842afa36caa4",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_shopping_level3.md": "bc42adddab04ce601eda2e64690e119cb9e084db5dfe0761690b7f7175e8127e",
+        "skilladam/benchmarks/deepplanning/prompts/metric_interpretation_travel_en.md": "fd745c3c928809f6b1d23c8875880616f526ee8016547d613268f03472dc379c",
+        "skilladam/benchmarks/deepplanning/prompts/skill_writing_policy.md": "017be1c78ac9fdaaceb8460a91ebd9c4d103bd6c054f3095c63b3477e11430d4",
+        "skilladam/benchmarks/deepplanning/prompts/skill_writing_policy_v2_r2_baseline.md": "3ef84813c44275d88f6d8518447fe2f878f99680a6716dff893456e30d089e90",
+        "skilladam/benchmarks/deepplanning/prompts/stage0_example.md": "147410eca526f1bed7403a01ec686cb53a7478040aa5e894151ac3821deafa45",
+        "skilladam/benchmarks/deepplanning/prompts/stage0_extra_section.md": "6c3371b5aec29c9b188feeced8e560f673abc3e15cece49d487b3dd16f9bf458",
+        "skilladam/benchmarks/deepplanning/prompts/success_types.md": "09f1cf19b8424631cd1d0bc6028521e6e25827e8fc39a1b52a5c782c63fa6fa3",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_compress_example_shopping.md": "69cbcf6f72ea32d3df9e3027396cfca41e2f6257bed5f6f82aedaf063a5c209a",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_compress_example_travel.md": "7e3752afaee19194d3a2024c3fddb45761692bf50a05b184bbec211b4fb32665",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format.md": "c0d9986217114a090f698b9eb269f55dcfb544d3f4f1129fb520525edc41e3b9",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level1.md": "5d3569ad20fa1abbd328e0938fa524f7593b7c6d7989cbc4f5b61c6a1cb0befe",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level2.md": "5d3569ad20fa1abbd328e0938fa524f7593b7c6d7989cbc4f5b61c6a1cb0befe",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_shopping_level3.md": "3002e92407bc2c21acc2b0aad56773227d38c1adf3e244bb1a30c1c290b6b58e",
+        "skilladam/benchmarks/deepplanning/prompts/trajectory_label_format_travel_en.md": "1c0bb7024fabc6576bb95fc08a7c34c80b4540e7ae719faf3bc92b6afa916325"
+      }
+    },
+    "docvqa": {
+      "main_result_files": [
+        "skilladam/benchmarks/docvqa/prompts/failure_types.md",
+        "skilladam/benchmarks/docvqa/prompts/iteration_example.md",
+        "skilladam/benchmarks/docvqa/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/docvqa/prompts/rollout_system.md",
+        "skilladam/benchmarks/docvqa/prompts/skill_writing_policy.md",
+        "skilladam/benchmarks/docvqa/prompts/stage0_example.md",
+        "skilladam/benchmarks/docvqa/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/docvqa/prompts/stage0_system_prompt.md",
+        "skilladam/benchmarks/docvqa/prompts/success_types.md",
+        "skilladam/benchmarks/docvqa/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/docvqa/prompts/failure_types.md": "4ddc48e881ad8e6cf30f93affc36164583e04834768f4c22d8eb3cc6e0daf4e2",
+        "skilladam/benchmarks/docvqa/prompts/iteration_example.md": "54907cf79598d138ad8f8630e0a18a4521f55fde4f0959871e8fdb9f734acaa1",
+        "skilladam/benchmarks/docvqa/prompts/metric_interpretation.md": "81fc3357ed8113d14707ef8dc56c610a9ca957ecc8410e6f41ee2f4de5877212",
+        "skilladam/benchmarks/docvqa/prompts/rollout_system.md": "f6484254d7e4a8bc8504caab5090937e650c4ffda1baa233d5be65202560ffd9",
+        "skilladam/benchmarks/docvqa/prompts/skill_writing_policy.md": "44692407225905d88874479c96acde09761df2bdd3e99c780e8b46d03c46d86a",
+        "skilladam/benchmarks/docvqa/prompts/stage0_example.md": "50eda56edcbdbcda7a8d584fad4d87ddba5b15dec484acee81f62f0ede44da1a",
+        "skilladam/benchmarks/docvqa/prompts/stage0_extra_section.md": "dd398c369fe88225f8a00945a7de9bd5233f6126e065b3f3cf0e6b76f002a451",
+        "skilladam/benchmarks/docvqa/prompts/stage0_system_prompt.md": "f37e1ea2c44c43de9910f4fd8e22df12bd4ada980dd6c676dface6ce6e1d95c1",
+        "skilladam/benchmarks/docvqa/prompts/success_types.md": "df92ef3f8f48f8da7001110ee08bee5ea85e95a9a61a5b5274388a514c2a661a",
+        "skilladam/benchmarks/docvqa/prompts/trajectory_label_format.md": "f8b59497081157202307667483287fad9d2bc40a719aa1768d29852dcb511bfc"
+      }
+    },
+    "lmb": {
+      "main_result_files": [
+        "skilladam/benchmarks/lmb/prompts/failure_types.md",
+        "skilladam/benchmarks/lmb/prompts/iteration_example.md",
+        "skilladam/benchmarks/lmb/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/lmb/prompts/skill_writing_policy.md",
+        "skilladam/benchmarks/lmb/prompts/stage0_example.md",
+        "skilladam/benchmarks/lmb/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/lmb/prompts/success_types.md",
+        "skilladam/benchmarks/lmb/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/lmb/prompts/failure_types.md": "4c2629e7341ae7a3c2c30fa85e68b219a9c9419d1f6ad07c098ff162627f25e9",
+        "skilladam/benchmarks/lmb/prompts/iteration_example.md": "3dac2e52dfb7145d6c00723b78c7be90c877c5c992c456b7cf07e11ec99d8ef1",
+        "skilladam/benchmarks/lmb/prompts/metric_interpretation.md": "a840cb5c9bdfbb94c3557ab7839ea8bd40150c0b2c60abdfd11bbb3f52e63176",
+        "skilladam/benchmarks/lmb/prompts/skill_writing_policy.md": "a8e7b494ae74827dda0572ccdf378792cbcc4be9ca7e90a20c42caa1026196f0",
+        "skilladam/benchmarks/lmb/prompts/stage0_example.md": "c01185b0c9e8de66f9159542f921eb7e6fa1254e150974fab45956a628332f2b",
+        "skilladam/benchmarks/lmb/prompts/stage0_extra_section.md": "79928334d9b823583bb98d1e7bfa0a20c00bcf84f1676cc8cb2a2be649bb4780",
+        "skilladam/benchmarks/lmb/prompts/success_types.md": "8d2fc4dc3399f5c91e7cccb189f2c1923300581f32dffe752246c9452cfe2d6c",
+        "skilladam/benchmarks/lmb/prompts/trajectory_label_format.md": "62515aa1b02303bd8ff05891e7bc846281e223256ce3ddec3dbf35a12fc093bb"
+      }
+    },
+    "officeqa": {
+      "main_result_files": [
+        "skilladam/benchmarks/officeqa/prompts/failure_types.md",
+        "skilladam/benchmarks/officeqa/prompts/iteration_example.md",
+        "skilladam/benchmarks/officeqa/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/officeqa/prompts/skill_writing_policy.md",
+        "skilladam/benchmarks/officeqa/prompts/stage0_example.md",
+        "skilladam/benchmarks/officeqa/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/officeqa/prompts/stage0_system_prompt.md",
+        "skilladam/benchmarks/officeqa/prompts/success_types.md",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_compress_example.md",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_compress_system.md",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/officeqa/prompts/failure_types.md": "aab980596add195f7919784f8506929ec9984f29335c2107041ff63ff3a383f0",
+        "skilladam/benchmarks/officeqa/prompts/iteration_example.md": "a79417283e927504812bfcc4638e952b1c65d64052c049024e11733f5530364d",
+        "skilladam/benchmarks/officeqa/prompts/metric_interpretation.md": "f59409919ffcfc35245969aca3290d77b35f35cf04543c92b65524dc4b42a26d",
+        "skilladam/benchmarks/officeqa/prompts/skill_writing_policy.md": "87e4982c2e90106c6ac68fc065b9c4bf99d46c4ee608e53262595bc80f2e9056",
+        "skilladam/benchmarks/officeqa/prompts/stage0_example.md": "731c63cb571b11d83d1dbea27a369b0b79752c2678b35bd0e1c795d0db89032c",
+        "skilladam/benchmarks/officeqa/prompts/stage0_extra_section.md": "c02aa7296cd3269836736074b476cfef531d2496908be773d324d6bc43dba31e",
+        "skilladam/benchmarks/officeqa/prompts/stage0_system_prompt.md": "c4f0c737a9406af7b6de54c4e686350221c771d85e1b24d28a534ecf27ff71ac",
+        "skilladam/benchmarks/officeqa/prompts/success_types.md": "f331a085999b10184994b47c605fac91678949882e14580367d04b3925e62ae5",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_compress_example.md": "c634f00b8dbfbc514a386b84f04f5588270367f7fa1501c61efe5840a04da9b4",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_compress_system.md": "ed6f8c76cd4fba91faeef590089dc35678bebe837e6bd64e8be613afa54580a2",
+        "skilladam/benchmarks/officeqa/prompts/trajectory_label_format.md": "127da3f2fd539cc919db25a53ff9a4bbf74c07ff526d09ac1cbdc31fbab54541"
+      }
+    },
+    "searchqa": {
+      "main_result_files": [
+        "skilladam/benchmarks/searchqa/prompts/failure_types.md",
+        "skilladam/benchmarks/searchqa/prompts/iteration_example.md",
+        "skilladam/benchmarks/searchqa/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/searchqa/prompts/stage0_example.md",
+        "skilladam/benchmarks/searchqa/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/searchqa/prompts/success_types.md",
+        "skilladam/benchmarks/searchqa/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/searchqa/prompts/failure_types.md": "57055cca04b43f48c429292e1d6c7971f443364dbbb7a12b3ab48c0f98515cc4",
+        "skilladam/benchmarks/searchqa/prompts/iteration_example.md": "d47349f3064aa9eaebda539a844e17ea8d77a49691b3c0cd377fe46f734356bd",
+        "skilladam/benchmarks/searchqa/prompts/metric_interpretation.md": "e3b7952b9c028cfc287b7a8caa19a4996683b530b5a4a31622a3930716b9f7b2",
+        "skilladam/benchmarks/searchqa/prompts/stage0_example.md": "0c9a7d08a78e5a27f2d68ba627c2d945b3569424336ce09a719e14964c557793",
+        "skilladam/benchmarks/searchqa/prompts/stage0_extra_section.md": "24f5a4f7da56420275797cab5c3bd0e330ebcae8d0fe467d9a253844f0afe677",
+        "skilladam/benchmarks/searchqa/prompts/success_types.md": "306465082222eac56eee27c054c584565405c5896ad12cb6943c2cd27875a23b",
+        "skilladam/benchmarks/searchqa/prompts/trajectory_label_format.md": "ac40c577b1121a4f41079230aabedc2c08d908474ef18e2e71bc62a10b6357e9"
+      }
+    },
+    "spreadsheetbench": {
+      "main_result_files": [
+        "skilladam/benchmarks/spreadsheetbench/prompts/failure_types.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/iteration_example.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/metric_interpretation.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/skill_writing_policy.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_example.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_extra_section.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_system_prompt.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/success_types.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_compress_example.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_compress_system.md",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_label_format.md"
+      ],
+      "packaged_files": {
+        "skilladam/benchmarks/spreadsheetbench/prompts/failure_types.md": "d911a83eebe4609d3f9d0da3e1511f689ead55aa4b63889d81910a032b0c87f8",
+        "skilladam/benchmarks/spreadsheetbench/prompts/iteration_example.md": "f3bb86baef61b8762c79174571116dea09a0599cef6a806806b6864e8d69822b",
+        "skilladam/benchmarks/spreadsheetbench/prompts/metric_interpretation.md": "eb5a0ed630e671b1ca0b7109e2a877363f19f7673e1aa51f8d3fb69ed891dabe",
+        "skilladam/benchmarks/spreadsheetbench/prompts/skill_writing_policy.md": "07bba2c0597ba8c560a13161197a88177cef3b55229212e0bb53f75dd2cc7358",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_example.md": "88e1c63e189cc32de6910e34cc403ea4c32f67caa9435b8303c33c713a2ab427",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_extra_section.md": "901a556b7093fdefbe923a45726a9b68b4e7e4c9fa84856a9ea0014fe766c537",
+        "skilladam/benchmarks/spreadsheetbench/prompts/stage0_system_prompt.md": "9c28867921cbc44075ca4922abf863e3fe943b331bcc55e2e8e21ff4c8c8f2d4",
+        "skilladam/benchmarks/spreadsheetbench/prompts/success_types.md": "496dd71dc492bee857f2cc1e6ed0e74f76170070e596a98f97522bfd6580b8f8",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_compress_example.md": "ad4158b879fd037faca04f718bd4c52ff28381b8581f62db4fda7bc22128928e",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_compress_system.md": "a679f25f88dfaa007c2b4dd775612b842178f9268e153f29879b5781c6e0e8b3",
+        "skilladam/benchmarks/spreadsheetbench/prompts/trajectory_label_format.md": "422292f111fb4eb9bbb498fa35432425c08f044948f31bb0777d4f5669f5321a"
+      }
+    }
+  }
+}

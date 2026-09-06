@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "profile": "skilladam-paper-240-v1",
+  "qwen_agent_revision": "31a4d36d123688581a9e9744427272b33ce940e0",
+  "dataset_revision": "213876cce679f993a476d01042e13d111c0e3648",
+  "qwen_agent_root": "qwen-agent",
+  "benchmark_root": "qwen-agent/benchmark/deepplanning",
+  "bridge_module": "skilladam.backends.deepplanning_bridge",
+  "bridge_protocol_version": 1,
+  "slices": {
+    "shopping_level1": {
+      "query_file": "shoppingplanning/data/level_1_query_meta.json",
+      "database_root": "shoppingplanning/database_level1"
+    },
+    "shopping_level2": {
+      "query_file": "shoppingplanning/data/level_2_query_meta.json",
+      "database_root": "shoppingplanning/database_level2"
+    },
+    "shopping_level3": {
+      "query_file": "shoppingplanning/data/level_3_query_meta.json",
+      "database_root": "shoppingplanning/database_level3"
+    },
+    "travel_en": {
+      "query_file": "travelplanning/data/travelplanning_query_en.json",
+      "database_root": "travelplanning/database/database_en"
+    }
+  }
+}

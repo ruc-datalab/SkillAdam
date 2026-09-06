@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "skilladam": {
+      "command": "skilladam-product-mcp",
+      "args": [],
+      "env": {"SKILLADAM_PLATFORM": "github-copilot"}
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "api_key_env": "OPENAI_API_KEY",
+  "base_url_env": "OPENAI_BASE_URL",
+  "timeout_seconds": 120,
+  "max_retries": 2,
+  "max_completion_tokens": 4096,
+  "token_limit_field": "max_completion_tokens",
+  "temperature": 1,
+  "reasoning_mode": "top_level",
+  "spreadsheet_execution_mode": "container",
+  "spreadsheet_sandbox_engine": "docker",
+  "spreadsheet_sandbox_image_env": "SKILLADAM_SPREADSHEET_SANDBOX_IMAGE",
+  "spreadsheet_sandbox_security_profile": "engine-security-opt",
+  "spreadsheet_exec_timeout_seconds": 120,
+  "spreadsheet_task_timeout_seconds": 600,
+  "spreadsheet_max_turns": 30
+}

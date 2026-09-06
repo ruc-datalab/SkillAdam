@@ -1,0 +1,828 @@
+{
+  "schema_version": 2,
+  "profile_id": "paper-main-results-v1",
+  "seed": 42,
+  "authority": {
+    "title": "Gradient-Inspired Skill Self-Evolution for LLM Agents",
+    "pdf_sha256": "e65258c6f3e4114eeb397438ddf9c895dbef4887f073189ecc3d33faae22d70a",
+    "results_source": "paper tables 1-4",
+    "configuration_source": "archived formal-run configs",
+    "interpretation": "Paper scores, selected artifacts, and training configurations are separate provenance records."
+  },
+  "common": {
+    "runtime": "benchmark_native_direct_chat",
+    "general_agent_harness": false,
+    "seed": 42,
+    "max_completion_tokens": 16384,
+    "skilladam_primary_epochs": 1,
+    "skilladam_iterations_vary_by_benchmark": true,
+    "skillopt_epochs": 4,
+    "stage0_shared_by_methods": true,
+    "result_reproduction_claim": "configuration_reproduction_not_byte_identical_generation"
+  },
+  "benchmarks": {
+    "alfworld": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 39,
+        "selection_cases": 18,
+        "optimization_pool_cases": 57,
+        "test_cases": 134,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 5,
+        "failure_cases": 3,
+        "case_ids": [
+          "train:0023",
+          "train:0020",
+          "train:0011",
+          "train:0033",
+          "val:0013",
+          "train:0036",
+          "val:0006",
+          "train:0030"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 300,
+        "workers": 8,
+        "baseline_max_cases": 57
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "alfworld-main-result",
+        "trajectory_compression": "llm",
+        "optimizer_context_limit": 110000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": false,
+        "batch_size": 10,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": true,
+        "max_iterations": 6,
+        "min_iterations": 6,
+        "archived_iterations": 6,
+        "max_consecutive_failures": 99,
+        "workers": 10,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "rollout_max_steps": 50,
+        "history_turns": 2,
+        "momentum": true,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "metric": "hard",
+          "v_max": 0.1
+        },
+        "gate": {
+          "profile": "alfworld-relaxed-main-result",
+          "primary": "hard",
+          "accept_non_regression": true
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-alfworld-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 8,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "rollout_max_steps": 50
+      },
+      "evaluation": {
+        "metric": "hard",
+        "test_cases": 134,
+        "workers": 32,
+        "request_timeout_seconds": 300,
+        "paper_results_percent": {
+          "baseline": 83.6,
+          "skillopt": 87.3,
+          "skilladam": 89.6
+        }
+      },
+      "selected_artifacts": {
+        "all": "ce8165b0e5763ef82f6ecd9602850ee910f7ceff04aba61bc6fe3b1393b304d4"
+      }
+    },
+    "deepplanning": {
+      "provider": "venus",
+      "model": "claude-4-5-sonnet-20250929",
+      "dataset": {
+        "split_rule": "odd_ids_optimization_even_ids_test",
+        "optimization_cases_by_scope": {
+          "shopping_level1": 25,
+          "shopping_level2": 25,
+          "shopping_level3": 10,
+          "travel_en": 60
+        },
+        "test_cases_by_scope": {
+          "shopping_level1": 25,
+          "shopping_level2": 25,
+          "shopping_level3": 10,
+          "travel_en": 60
+        },
+        "skillopt_train_selection_by_scope": {
+          "shopping_level1": [16, 9],
+          "shopping_level2": [16, 9],
+          "shopping_level3": [6, 4],
+          "travel_en": [40, 20]
+        }
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "case_ids_by_scope": {
+          "shopping_level1": ["7", "11", "17", "19", "37"],
+          "shopping_level2": ["1", "21", "25", "31", "37"],
+          "shopping_level3": ["1", "7", "11", "17"],
+          "travel_en": ["7", "23", "79", "101"]
+        },
+        "temperature": 0.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 600,
+        "workers": 8
+      },
+      "skilladam": {
+        "seed": 42,
+        "framework": "e2_momentum_adaptive_edit_budget",
+        "prompt_profile": "v2-r2-baseline-with-scope-prompts",
+        "trajectory_compression": "llm",
+        "optimizer_context_limit": null,
+        "sampling_strategy": "random",
+        "shuffle_optimization_pool": false,
+        "batch_size": 5,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": false,
+        "scope_limits": {
+          "shopping_level1": {
+            "max_iterations": 12,
+            "min_iterations": 5,
+            "max_consecutive_failures": 4
+          },
+          "shopping_level2": {
+            "max_iterations": 12,
+            "min_iterations": 5,
+            "max_consecutive_failures": 4
+          },
+          "shopping_level3": {
+            "max_iterations": 12,
+            "min_iterations": 5,
+            "max_consecutive_failures": 4
+          },
+          "travel_en": {
+            "max_iterations": 20,
+            "min_iterations": 7,
+            "max_consecutive_failures": 4
+          }
+        },
+        "workers": 8,
+        "reasoning_effort": null,
+        "temperature": 0.0,
+        "prompt_cache": true,
+        "cache_session_prefix": "deepplanning-e2:momentum-edit-budget",
+        "optimization_memory": true,
+        "rollout_max_interactions": {
+          "shopping": 30,
+          "travel": 60
+        },
+        "momentum": true,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "shopping_metric": "score",
+          "shopping_v_max": 0.05,
+          "travel_metric": "composite_score",
+          "travel_v_max": 0.1
+        },
+        "gate": {
+          "shopping": {
+            "case_accuracy_gain": 0.15,
+            "match_rate_gain": 0.05,
+            "max_case_accuracy_drop": 0.15,
+            "max_match_rate_drop": 0.05
+          },
+          "travel": {
+            "commonsense_gain": 0.03,
+            "personalized_gain": 0.08,
+            "max_commonsense_drop": 0.05,
+            "max_personalized_drop": 0.08
+          }
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "prompt_profile": "skillopt-deepplanning-main-result",
+        "epochs": 4,
+        "batch_size_by_scope": {
+          "shopping_level1": 16,
+          "shopping_level2": 16,
+          "shopping_level3": 6,
+          "travel_en": 40
+        },
+        "reflection_minibatch_size_by_scope": {
+          "shopping_level1": 8,
+          "shopping_level2": 8,
+          "shopping_level3": 6,
+          "travel_en": 8
+        },
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 8,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples_by_scope": {
+          "shopping_level1": 16,
+          "shopping_level2": 16,
+          "shopping_level3": 6,
+          "travel_en": 20
+        },
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "temperature": 0.0,
+        "reasoning_effort": "medium",
+        "prompt_cache": true,
+        "conversion_model": "gpt-4.1",
+        "conversion_max_tokens": 10240,
+        "conversion_max_attempts": 30
+      },
+      "evaluation": {
+        "metric": "hard",
+        "test_cases": 120,
+        "workers": 5,
+        "request_timeout_seconds": 600,
+        "paper_results_percent": {
+          "baseline": 15.8,
+          "skillopt": 21.7,
+          "skilladam": 28.3
+        },
+        "paper_results_by_domain_percent": {
+          "baseline": {
+            "shopping": 31.7,
+            "travel": 0.0
+          },
+          "skillopt": {
+            "shopping": 41.7,
+            "travel": 1.7
+          },
+          "skilladam": {
+            "shopping": 45.0,
+            "travel": 11.7
+          }
+        },
+        "paper_skilladam_shopping_by_level_percent": {
+          "shopping_level1": 52.0,
+          "shopping_level2": 36.0,
+          "shopping_level3": 50.0
+        }
+      },
+      "selected_artifacts": {
+        "shopping_level1": "144cd6f5a9550e7a4901c9ffd6c819d67a5d1ca1f4c9f238563df8fe17aef294",
+        "shopping_level2": "6c1a1d8dfb3b4ec0f13a056e311ce1a4e3dbc0029015468a06288dbfee4de7f9",
+        "shopping_level3": "469d55008a31271d9aeabb68423a505674103558fa6f7b64a0825c294c5c6956",
+        "travel_en": "dba6cee1da3c6a6e6f9a8ed50478a17c97d28289b08be7ae32577adc30843dd3"
+      }
+    },
+    "docvqa": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 107,
+        "selection_cases": 53,
+        "optimization_pool_cases": 160,
+        "test_cases": 374,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 3,
+        "failure_cases": 7,
+        "case_ids": [
+          "47458",
+          "53575",
+          "62478",
+          "5612",
+          "47974",
+          "63109",
+          "50877",
+          "32871",
+          "64152",
+          "62840"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "image_detail": "auto",
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 300,
+        "workers": 16
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "docvqa-main-result",
+        "trajectory_compression": "deterministic",
+        "optimizer_context_limit": 110000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": false,
+        "batch_size": 15,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": true,
+        "max_iterations": 11,
+        "min_iterations": 11,
+        "max_consecutive_failures": 11,
+        "archived_iterations": 11,
+        "workers": 60,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "image_detail": "auto",
+        "momentum": true,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "metric": "hard",
+          "v_max": 0.04
+        },
+        "gate": {
+          "profile": "docvqa-v2-main-result",
+          "hard_gain": 0.01,
+          "soft_gain": 0.01,
+          "max_hard_drop": 0.05,
+          "max_soft_drop": 0.05
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-docvqa-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 16,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "image_detail": "auto"
+      },
+      "evaluation": {
+        "metric": "hard",
+        "test_cases": 374,
+        "workers": 60,
+        "request_timeout_seconds": 300,
+        "paper_results_percent": {
+          "baseline": 90.0,
+          "skillopt": 91.2,
+          "skilladam": 92.3
+        }
+      },
+      "selected_artifacts": {
+        "all": "f653e17bdc735d598b3eb43fa569215e5617c2a94e0b7a1b830c3849ceb38549"
+      }
+    },
+    "lmb": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 35,
+        "selection_cases": 18,
+        "optimization_pool_cases": 53,
+        "test_cases": 124,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 3,
+        "failure_cases": 7,
+        "case_ids": [
+          "202511:23",
+          "202512:18",
+          "202512:38",
+          "202512:50",
+          "202601:21",
+          "202601:37",
+          "202601:46",
+          "202602:14",
+          "202602:29",
+          "202602:46"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 300,
+        "workers": 128
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "lmb-main-result",
+        "trajectory_compression": "deterministic",
+        "optimizer_context_limit": 150000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": false,
+        "batch_size": 10,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": true,
+        "max_iterations": 15,
+        "min_iterations": 5,
+        "max_consecutive_failures": 3,
+        "archived_iterations": 5,
+        "workers": 20,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "momentum": true,
+        "adaptive_edit_budget": false,
+        "gate": {
+          "profile": "lmb-main-result",
+          "exact_match_gain": 0.08,
+          "max_exact_match_drop": 0.08
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-lmb-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 64,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "shuffle_choices": true
+      },
+      "evaluation": {
+        "metric": "exact_match",
+        "test_cases": 124,
+        "workers": 16,
+        "request_timeout_seconds": 300,
+        "paper_results_percent": {
+          "baseline": 67.7,
+          "skillopt": 66.9,
+          "skilladam": 67.7
+        }
+      },
+      "selected_artifacts": {
+        "all": "92cf20579e32fd14d3e0ffe10c9fdc0f979e43baaf2cc553528b0fb9e6a4d7c1"
+      }
+    },
+    "officeqa": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 50,
+        "selection_cases": 24,
+        "optimization_pool_cases": 74,
+        "test_cases": 172,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 3,
+        "failure_cases": 7,
+        "case_ids": [
+          "UID0049",
+          "UID0238",
+          "UID0222",
+          "UID0027",
+          "UID0195",
+          "UID0086",
+          "UID0228",
+          "UID0165",
+          "UID0041",
+          "UID0110"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 300,
+        "workers": 4
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "officeqa-main-result",
+        "trajectory_compression": "llm",
+        "optimizer_context_limit": 110000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": false,
+        "batch_size": 10,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": true,
+        "max_iterations": 15,
+        "min_iterations": 5,
+        "max_consecutive_failures": 3,
+        "archived_iterations": 8,
+        "workers": 4,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "momentum": true,
+        "adaptive_edit_budget": false,
+        "gate": {
+          "profile": "officeqa-main-result",
+          "exact_match_gain": 0.08,
+          "f1_gain": 0.05,
+          "max_exact_match_drop": 0.08,
+          "max_f1_drop": 0.05
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-officeqa-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 4,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "rollout_max_tool_turns": 24
+      },
+      "evaluation": {
+        "metric": "em",
+        "test_cases": 172,
+        "workers": 4,
+        "request_timeout_seconds": 300,
+        "paper_results_percent": {
+          "baseline": 65.7,
+          "skillopt": 72.1,
+          "skilladam": 72.1
+        }
+      },
+      "selected_artifacts": {
+        "all": "b5a7f2cc84f8ef529e4f8d2d625d4b2aba2311c4460c6328af677542858ff49a"
+      }
+    },
+    "searchqa": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 400,
+        "selection_cases": 200,
+        "optimization_pool_cases": 600,
+        "test_cases": 1400,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 5,
+        "failure_cases": 10,
+        "case_ids": [
+          "03a6254dd0154f0095dc73ff48f2ffb3",
+          "1eda265b17424078a78594c9c13f2727",
+          "2017497b907f4e17988203e7613abef6",
+          "24e447c6f2564bfcab303c390cb606dd",
+          "400ef271d312459ebf072bacffd438be",
+          "4c64770f574c499392b07f182a75c72c",
+          "553f1b511f044102b9a5a31fb23d7fd4",
+          "6b497ac583564d389f5e5f3f565e0030",
+          "7f8fafb69c89438fa2d458434ed4ebe9",
+          "80437ec671f24947ba2ee4c4c40957b7",
+          "88d06cbae9ef4d5f827ed4d8ed7e2ee7",
+          "89fb20b672ea4978a0b394206535cf4b",
+          "a1673e0607ec48e7972067fab1cc473a",
+          "a4375645235745baac2b0253713ff424",
+          "e67fc6bee9a54b9fab439be3c68128cb"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 600,
+        "baseline_max_cases": 100,
+        "baseline_workers": 3,
+        "workers": 3
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "searchqa-main-result",
+        "trajectory_compression": "deterministic",
+        "optimizer_context_limit": 200000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": false,
+        "batch_size": 15,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": false,
+        "max_iterations": 60,
+        "min_iterations": 40,
+        "max_consecutive_failures": 10,
+        "archived_iterations": 40,
+        "workers": 3,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "allow_verbatim_pairs": false,
+        "momentum": true,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "metric": "exact_match",
+          "v_max": 0.05
+        },
+        "gate": {
+          "profile": "searchqa-exp18f-main-result",
+          "exact_match_gain": 0.04,
+          "f1_gain": 0.025,
+          "max_exact_match_drop": 0.04,
+          "max_f1_drop": 0.05
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-searchqa-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 24,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true
+      },
+      "evaluation": {
+        "metric": "exact_match",
+        "test_cases": 1400,
+        "workers": 3,
+        "request_timeout_seconds": 600,
+        "paper_results_percent": {
+          "baseline": 72.1,
+          "skillopt": 87.3,
+          "skilladam": 87.5
+        }
+      },
+      "selected_artifacts": {
+        "all": "b863e2f7d02d7825083c99766694ba3c43e2c761d3029f6437673d552d136134"
+      }
+    },
+    "spreadsheetbench": {
+      "provider": "openrouter",
+      "model": "openai/gpt-5.5",
+      "dataset": {
+        "train_cases": 80,
+        "selection_cases": 40,
+        "optimization_pool_cases": 120,
+        "test_cases": 280,
+        "skilladam_pool": "train_plus_selection",
+        "skillopt_pool": "original_train_with_disjoint_selection"
+      },
+      "stage0": {
+        "shared_by_methods": true,
+        "seed": 42,
+        "success_cases": 4,
+        "failure_cases": 6,
+        "case_ids": [
+          "170-13",
+          "32337",
+          "35742",
+          "414-20",
+          "472-15",
+          "48365",
+          "48745",
+          "51090",
+          "52216",
+          "55965"
+        ],
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "max_completion_tokens": 16384,
+        "request_timeout_seconds": 300,
+        "baseline_max_cases": 30,
+        "baseline_workers": 6,
+        "baseline_chunk_size": 10,
+        "rollout_max_turns": 30,
+        "workers": 6
+      },
+      "skilladam": {
+        "seed": 42,
+        "prompt_profile": "spreadsheetbench-main-result",
+        "trajectory_compression": "llm",
+        "optimizer_context_limit": 96000,
+        "sampling_strategy": "sequential",
+        "shuffle_optimization_pool": true,
+        "shuffle_seed": 42,
+        "batch_size": 15,
+        "validation_cases": "same_as_training_batch",
+        "include_partial_final_batch": false,
+        "max_iterations": 15,
+        "min_iterations": 15,
+        "max_consecutive_failures": 99,
+        "archived_iterations": 8,
+        "workers": 4,
+        "reasoning_effort": "medium",
+        "temperature": 1.0,
+        "rollout_max_turns": 30,
+        "rollout_timeout_seconds": 600,
+        "momentum": true,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 2,
+          "beta": 0.9,
+          "metric": "hard",
+          "v_max": 0.1
+        },
+        "gate": {
+          "profile": "spreadsheetbench-main-result",
+          "hard_gain": 0.06,
+          "per_cell_gain": 0.03,
+          "max_hard_drop": 0.08,
+          "max_per_cell_drop": 0.06
+        }
+      },
+      "skillopt": {
+        "seed": 42,
+        "reasoning_effort": "medium",
+        "prompt_profile": "skillopt-spreadsheetbench-main-result",
+        "epochs": 4,
+        "batch_size": 40,
+        "reflection_minibatch_size": 8,
+        "merge_batch_size": 8,
+        "max_analyst_rounds": 3,
+        "analyst_workers": 16,
+        "rollout_workers": 24,
+        "max_edit_budget": 4,
+        "min_edit_budget": 2,
+        "scheduler": "cosine",
+        "patch_mode": true,
+        "slow_update_samples": 20,
+        "meta_skill": true,
+        "use_gate": true,
+        "shuffle_each_epoch": true,
+        "rollout_max_turns": 30,
+        "rollout_timeout_seconds": 600
+      },
+      "evaluation": {
+        "metric": "hard",
+        "test_cases": 280,
+        "workers": 4,
+        "request_timeout_seconds": 300,
+        "paper_results_percent": {
+          "baseline": 67.9,
+          "skillopt": 80.7,
+          "skilladam": 81.1
+        }
+      },
+      "selected_artifacts": {
+        "all": "2aa29d86a12ecfc80488cfc6360daee584562514667f3b62fb5cdcfb5d79f7ee"
+      }
+    }
+  }
+}

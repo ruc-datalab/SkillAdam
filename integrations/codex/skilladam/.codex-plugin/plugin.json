@@ -1,0 +1,19 @@
+{
+  "name": "skilladam",
+  "version": "0.1.0+codex.20260823145246",
+  "description": "Optimize Skills with frozen evaluations, validated patches, and optional hunk review.",
+  "author": {
+    "name": "SkillAdam contributors"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SkillAdam",
+    "shortDescription": "Optimize Skills with optional patch review",
+    "longDescription": "Generate representative tasks, freeze evaluation, and validate Skill improvements. Select all patch hunks by default; pause for review only when requested.",
+    "developerName": "SkillAdam contributors",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive", "Read", "Write"],
+    "defaultPrompt": ["Optimize this Skill for my intended use."]
+  },
+  "mcpServers": "./.mcp.json"
+}

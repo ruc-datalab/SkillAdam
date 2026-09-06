@@ -1,0 +1,25 @@
+## Workflow
+
+1. **Read the question for answer shape before scanning**: Decide whether it asks for a year/date, count, percentage, money amount, table cell value, category name, identifier number, page indicator, or handwritten note. This determines whether the answer should be a bare number, a copied phrase, a category label, a yes/no token, or a full multi-part written value.
+
+2. **Use the layout to locate the evidence**: In forms, match the exact label in the question to the nearest aligned value. In tables, identify the relevant section/subtable, row condition, and column header, then read only the intersection cell; if the question asks which category satisfies a comparison or superlative, compare only the values in that filtered section and return the single best-supported row/category label unless the question asks for all ties. In free text, find the sentence containing the question keywords and extract only the requested span. For handwritten notes, anchor on the nearby printed label or named reference and transcribe the complete adjacent handwritten value.
+
+3. **Select the smallest sufficient span**: Answer exactly what the question asks, not the surrounding noun phrase. For “how many” questions, return only the count; for “diagram no.” or other identifiers, return only the identifier value, not the label word; for page-number questions, return the current page number alone unless the question asks for the full page indicator; for titles or designations, return only the role phrase and not the adjacent organization or address; for advertised products/services or logos, return the primary brand/product name and omit generic service descriptors, taglines, locations, or company-system wording unless the question asks for the full company name or slogan; for course, agenda, or procedure entries, include attached schedule/session/day codes on the same line when they identify the requested option; for measurement/property questions, return the value expression without repeating the object noun unless it is inseparable from the printed value; for table values, copy the cell content rather than appending the row or column header.
+
+4. **Preserve document wording and numeric precision**: Keep spelling, capitalization, decimal places, date separators, apostrophes/quote marks, and handwritten wording as visible. Do not auto-convert plain apostrophes or quotation marks into curly typographic marks when copying names, headings, or sentences; if the scanned quote style is ambiguous, prefer plain ASCII quotes/apostrophes unless curly marks are clearly visible. For unfamiliar company, person, or institution names, verify each letter rather than substituting a more familiar-looking word, especially for similar glyphs such as `a`/`o`, `i`/`l`, and `0`/`O`; for handwritten numeric identifiers, verify every digit against nearby handwriting before finalizing, especially similar digits such as `4`/`6`, `3`/`8`, and `6`/`9`. If an amount is written in words, return the written amount only; do not add a numeric conversion, currency symbol, parentheses, or explanatory restatement.
+
+5. **Format units and symbols conservatively**: Include a percent sign, currency mark, weight unit, or other unit only when it is visibly part of the answer cell/span itself, and preserve whether a currency symbol is directly attached to the number or separated by a space. If the unit appears only in a column header or question wording, use it to locate the right value but usually return the bare cell value.
+
+6. **Return one concise tagged answer**: Output exactly one final answer inside `<answer>...</answer>`. Do not include reasoning, labels, extra punctuation, alternate readings, or explanatory text inside the tag.
+
+## Error Avoidance
+
+- Do not pad answers with context words from the question or neighboring fields. If the requested answer is a count, identifier, cell value, title/designation, or measurement, extra words like the object being counted, the field label, an affiliation, or the measured object can make an otherwise correct extraction wrong.
+
+- Do not infer units or symbols from headers. A table column may be labeled with a unit or percent sign while the cell itself contains only a bare number; copy the cell’s displayed form unless the symbol is visibly attached to the value.
+
+- Do not add conversions or normalized restatements. For historical, handwritten, or textual amounts, preserve the original wording and avoid adding modern numeric equivalents, currency notation, or parenthetical clarifications.
+
+- Do not truncate handwritten sequences. When a handwritten date/code near an anchor contains multiple dash-separated or adjacent parts, capture every visible part in order and use the separators as consistently as they appear.
+
+- Do not confuse labels with values. For fields such as diagram numbers, deposit years, final weights, or total amounts, the answer is usually the value next to or under the label, not the combined label-plus-value phrase.

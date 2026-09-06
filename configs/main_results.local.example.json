@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "output_root": "<new-output-parent>/paper-main-results",
+  "benchmarks": {
+    "alfworld": {
+      "data_root": "<materialized-data-root>/alfworld",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_main_result.example.json"
+    },
+    "deepplanning": {
+      "data_root": "<materialized-data-root>/deepplanning",
+      "backend": "skilladam.backends.deepplanning_official:create_backend",
+      "backend_config": "backends/deepplanning_sonnet45_main_result.example.json"
+    },
+    "docvqa": {
+      "data_root": "<materialized-data-root>/docvqa",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_main_result.example.json"
+    },
+    "lmb": {
+      "data_root": "<materialized-data-root>/lmb",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_main_result.example.json"
+    },
+    "officeqa": {
+      "data_root": "<materialized-data-root>/officeqa",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_main_result.example.json"
+    },
+    "searchqa": {
+      "data_root": "<materialized-data-root>/searchqa",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_searchqa_main_result.example.json"
+    },
+    "spreadsheetbench": {
+      "data_root": "<materialized-data-root>/spreadsheetbench",
+      "backend": "skilladam.backends.openai_compatible:create_backend",
+      "backend_config": "backends/gpt55_spreadsheetbench_main_result.example.json"
+    }
+  }
+}

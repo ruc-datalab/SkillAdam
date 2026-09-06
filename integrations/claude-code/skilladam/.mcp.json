@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "skilladam": {
+      "command": "skilladam-product-mcp",
+      "args": [],
+      "timeout": 1800000,
+      "env": {"SKILLADAM_PLATFORM": "claude-code"}
+    }
+  }
+}

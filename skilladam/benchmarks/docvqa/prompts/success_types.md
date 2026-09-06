@@ -1,0 +1,4 @@
+- **exact_span_extraction**: The agent correctly located the target region and copied the minimal visible span verbatim — no extra words, no missing components, correct boundaries.
+- **format_discipline**: The agent made a non-trivial formatting decision correctly — included/omitted a unit, preserved original punctuation or capitalization, chose the right numeric precision, or handled a date/currency format that frequently causes errors.
+- **layout_navigation**: The agent correctly identified the right layout element (form field, table cell, figure label, handwritten note) among visually similar alternatives, demonstrating robust region-targeting.
+- **other**: None of the above. The success does not point to a generalizable skill rule (task was trivial, model's default reading sufficed, answer was a single unambiguous word).

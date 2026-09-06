@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "output_root": "/absolute/path/outside/repository/api-training-smoke",
+  "searchqa": {
+    "data_root": "/absolute/path/to/materialized/searchqa",
+    "backend_config": "backends/gpt55_searchqa_main_result.example.json"
+  },
+  "deepplanning": {
+    "runtime_root": "/absolute/path/to/deepplanning-runtime",
+    "backend_config": "backends/deepplanning_sonnet45_main_result.example.json"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "api_key_env": "OPENROUTER_API_KEY",
+  "base_url_env": "OPENROUTER_BASE_URL",
+  "timeout_seconds": 300,
+  "max_retries": 2,
+  "max_completion_tokens": 16384,
+  "token_limit_field": "max_completion_tokens",
+  "temperature": 1,
+  "reasoning_mode": "extra_body",
+  "spreadsheet_execution_mode": "local-subprocess",
+  "spreadsheet_exec_timeout_seconds": 600,
+  "spreadsheet_task_timeout_seconds": 600,
+  "spreadsheet_max_turns": 30
+}

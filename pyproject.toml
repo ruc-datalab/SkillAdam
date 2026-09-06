@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skilladam"
+version = "0.1.0.dev0"
+description = "Reproducible skill optimization across agent benchmarks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = [
+  "LICENSE",
+  "NOTICE",
+  "skilladam/baselines/skillopt/LICENSE",
+  "skilladam/baselines/skillopt/NOTICE",
+]
+dependencies = []
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.scripts]
+skilladam = "skilladam.cli:entrypoint"
+skilladam-product = "skilladam.product_cli:entrypoint"
+skilladam-product-mcp = "skilladam.product_mcp:entrypoint"
+skilladam-codex-product-mcp = "skilladam.codex_product_mcp:entrypoint"
+
+[project.optional-dependencies]
+alfworld = [
+  "alfworld==0.4.2",
+]
+backend = [
+  "openai>=2.49,<3",
+]
+data = [
+  "huggingface-hub>=1,<2",
+  "pillow>=12,<13",
+  "pyarrow>=23,<24",
+]
+deepplanning = [
+  "qwen-agent==0.0.34",
+  "openai>=2.49,<3",
+  "dashscope>=1.11",
+  "pandas>=1.5",
+  "numpy>=1.24",
+  "rank-bm25>=0.2.2",
+  "requests>=2.28",
+  "python-dotenv>=1",
+  "json5>=0.9",
+  "jsonlines>=3",
+  "jsonschema>=4",
+  "pydantic>=2.3",
+  "tiktoken>=0.5",
+  "eval-type-backport",
+  "pillow>=9",
+  "tabulate>=0.9",
+  "huggingface-hub>=1,<2",
+]
+spreadsheetbench = [
+  "openpyxl>=3.1",
+  "pandas",
+]
+
+[tool.setuptools.packages.find]
+include = ["skilladam*"]
+
+[tool.setuptools.package-data]
+"skilladam.core" = ["prompts/*.md"]
+"skilladam.benchmarks.alfworld" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.deepplanning" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.docvqa" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.lmb" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.officeqa" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.searchqa" = ["prompts/*.md", "requirements.txt"]
+"skilladam.benchmarks.spreadsheetbench" = ["prompts/*.md", "requirements.txt"]
+"skilladam.baselines.skillopt" = [
+  "prompts/*.md",
+  "prompts/benchmarks/*/*.md",
+]
+"skilladam.artifacts" = [
+  "skills/manifest.json",
+  "skills/*/*.md",
+  "skills/*/*/*.md",
+]
+"skilladam.data.profiles" = ["*.json"]
+"skilladam.experiments" = [
+  "main_results.json",
+  "prompt_resources.json",
+]
+"skilladam.ui" = ["*.html"]

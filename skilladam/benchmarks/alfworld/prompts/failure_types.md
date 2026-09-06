@@ -1,0 +1,10 @@
+- **navigation_loop**: the agent revisits the same locations repeatedly without progress
+- **missed_object**: the agent fails to pick up a visible/reachable goal object
+- **wrong_sequence**: the agent performs actions in the wrong order (e.g., placing before transforming)
+- **premature_stop**: the agent stops or gets stuck before completing all goal conditions
+- **action_loop**: the agent repeats the same action without advancing
+- **appliance_error**: the agent misuses or skips an appliance (microwave, fridge, sink)
+- **rule_missing**: the skill lacks a relevant rule for this situation
+- **rule_wrong**: an existing skill rule is misleading or incorrect
+- **rule_ignored**: the skill has the right rule but the agent did not follow it
+- **other**: none of the above

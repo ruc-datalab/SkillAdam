@@ -1,0 +1,18 @@
+SkillOpt attribution
+====================
+
+Copyright (c) 2026 Microsoft Corporation.
+
+The DocVQA rollout system prompt at
+`skilladam/benchmarks/docvqa/prompts/rollout_system.md` and the
+benchmark-specific error and success analyst prompts under
+`skilladam/baselines/skillopt/prompts/benchmarks/` are reproduced from
+SkillOpt under the MIT License in this directory.
+
+The SkillOpt baseline adapts its edit-budget scheduler, strict selection
+gate, slow-update block, longitudinal comparison categories, bounded
+DeepPlanning trajectory formatter, and optimizer prompt roles.
+The provider-neutral runner, contracts, checkpoint handling, usage
+integration, reports, and generic optimizer prompt wording are original
+SkillAdam implementations. Benchmark datasets and upstream provider
+implementations are not bundled.

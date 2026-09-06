@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "method": "skilladam",
+  "benchmarks": {
+    "alfworld": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "alfworld",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "alfworld/best_skill.md",
+          "source_sha256": "ce8165b0e5763ef82f6ecd9602850ee910f7ceff04aba61bc6fe3b1393b304d4",
+          "public_sha256": "ce8165b0e5763ef82f6ecd9602850ee910f7ceff04aba61bc6fe3b1393b304d4",
+          "source": {
+            "logical_path": "ckpt/alfworld.md",
+            "experiment_id": "alfworld_selected_checkpoint"
+          },
+          "generation": "selected_checkpoint",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "paper_reported_selected_artifact",
+            "split": "test",
+            "cases": 134,
+            "metric": "success_rate",
+            "score": 0.8955,
+            "solved": 120,
+            "secondary_metrics": {}
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    },
+    "deepplanning": {
+      "default_artifact_id": null,
+      "default_by_scope": {
+        "shopping_level1": "shopping_level1",
+        "shopping_level2": "shopping_level2",
+        "shopping_level3": "shopping_level3",
+        "travel_en": "travel_en"
+      },
+      "artifacts": [
+        {
+          "artifact_id": "shopping_level1",
+          "method": "skilladam",
+          "benchmark": "deepplanning",
+          "scope": "shopping_level1",
+          "role": "selected",
+          "relative_path": "deepplanning/shopping_level1.md",
+          "source_sha256": "144cd6f5a9550e7a4901c9ffd6c819d67a5d1ca1f4c9f238563df8fe17aef294",
+          "public_sha256": "144cd6f5a9550e7a4901c9ffd6c819d67a5d1ca1f4c9f238563df8fe17aef294",
+          "source": {
+            "logical_path": "ckpt/deepplanning/shopping_level1.md",
+            "experiment_id": "deepplanning_e1_momentum"
+          },
+          "generation": "automatic",
+          "model": "claude-4-5-sonnet-20250929",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 25,
+            "metric": "case_accuracy",
+            "score": 0.48,
+            "solved": 12,
+            "secondary_metrics": {
+              "match_rate": 0.811
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        },
+        {
+          "artifact_id": "shopping_level2",
+          "method": "skilladam",
+          "benchmark": "deepplanning",
+          "scope": "shopping_level2",
+          "role": "selected",
+          "relative_path": "deepplanning/shopping_level2.md",
+          "source_sha256": "6c1a1d8dfb3b4ec0f13a056e311ce1a4e3dbc0029015468a06288dbfee4de7f9",
+          "public_sha256": "6c1a1d8dfb3b4ec0f13a056e311ce1a4e3dbc0029015468a06288dbfee4de7f9",
+          "source": {
+            "logical_path": "ckpt/deepplanning/shopping_level2.md",
+            "experiment_id": "deepplanning_e1_momentum"
+          },
+          "generation": "automatic",
+          "model": "claude-4-5-sonnet-20250929",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 25,
+            "metric": "case_accuracy",
+            "score": 0.36,
+            "solved": 9,
+            "secondary_metrics": {
+              "match_rate": 0.783
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        },
+        {
+          "artifact_id": "shopping_level3",
+          "method": "skilladam",
+          "benchmark": "deepplanning",
+          "scope": "shopping_level3",
+          "role": "selected",
+          "relative_path": "deepplanning/shopping_level3.md",
+          "source_sha256": "469d55008a31271d9aeabb68423a505674103558fa6f7b64a0825c294c5c6956",
+          "public_sha256": "469d55008a31271d9aeabb68423a505674103558fa6f7b64a0825c294c5c6956",
+          "source": {
+            "logical_path": "ckpt/deepplanning/shopping_level3.md",
+            "experiment_id": "deepplanning_e1_momentum"
+          },
+          "generation": "automatic",
+          "model": "claude-4-5-sonnet-20250929",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 10,
+            "metric": "case_accuracy",
+            "score": 0.4,
+            "solved": 4,
+            "secondary_metrics": {
+              "match_rate": 0.76
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        },
+        {
+          "artifact_id": "travel_en",
+          "method": "skilladam",
+          "benchmark": "deepplanning",
+          "scope": "travel_en",
+          "role": "selected",
+          "relative_path": "deepplanning/travel_en.md",
+          "source_sha256": "dba6cee1da3c6a6e6f9a8ed50478a17c97d28289b08be7ae32577adc30843dd3",
+          "public_sha256": "dba6cee1da3c6a6e6f9a8ed50478a17c97d28289b08be7ae32577adc30843dd3",
+          "source": {
+            "logical_path": "ckpt/deepplanning/travel_en.md",
+            "experiment_id": "deepplanning_e1_momentum"
+          },
+          "generation": "automatic",
+          "model": "claude-4-5-sonnet-20250929",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 60,
+            "metric": "case_accuracy",
+            "score": 0.1167,
+            "solved": 7,
+            "secondary_metrics": {
+              "composite_score": 0.717,
+              "commonsense_score": 0.783,
+              "personalized_score": 0.65
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    },
+    "docvqa": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "docvqa",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "docvqa/best_skill.md",
+          "source_sha256": "f653e17bdc735d598b3eb43fa569215e5617c2a94e0b7a1b830c3849ceb38549",
+          "public_sha256": "f653e17bdc735d598b3eb43fa569215e5617c2a94e0b7a1b830c3849ceb38549",
+          "source": {
+            "logical_path": "ckpt/docvqa.md",
+            "experiment_id": "docvqa_full_pilot_v2"
+          },
+          "generation": "automatic",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "historical_held_out_test",
+            "cases": 374,
+            "metric": "hard",
+            "score": 0.9225,
+            "solved": null,
+            "secondary_metrics": {
+              "soft": 0.9663
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    },
+    "lmb": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "lmb",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "lmb/best_skill.md",
+          "source_sha256": "92cf20579e32fd14d3e0ffe10c9fdc0f979e43baaf2cc553528b0fb9e6a4d7c1",
+          "public_sha256": "92cf20579e32fd14d3e0ffe10c9fdc0f979e43baaf2cc553528b0fb9e6a4d7c1",
+          "source": {
+            "logical_path": "ckpt/lmb.md",
+            "experiment_id": "lmb_selected_checkpoint"
+          },
+          "generation": "selected_checkpoint",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 124,
+            "metric": "exact_match",
+            "score": 0.6774,
+            "solved": 84,
+            "secondary_metrics": {
+              "meta_accuracy": 0.733,
+              "non_meta_accuracy": 0.625
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    },
+    "officeqa": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "officeqa",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "officeqa/best_skill.md",
+          "source_sha256": "b5a7f2cc84f8ef529e4f8d2d625d4b2aba2311c4460c6328af677542858ff49a",
+          "public_sha256": "b5a7f2cc84f8ef529e4f8d2d625d4b2aba2311c4460c6328af677542858ff49a",
+          "source": {
+            "logical_path": "ckpt/officeqa.md",
+            "experiment_id": "officeqa_v2_continued"
+          },
+          "generation": "automatic",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 172,
+            "metric": "exact_match",
+            "score": 0.7151,
+            "solved": 123,
+            "secondary_metrics": {}
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    },
+    "searchqa": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "searchqa",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "searchqa/best_skill.md",
+          "source_sha256": "b863e2f7d02d7825083c99766694ba3c43e2c761d3029f6437673d552d136134",
+          "public_sha256": "b863e2f7d02d7825083c99766694ba3c43e2c761d3029f6437673d552d136134",
+          "source": {
+            "logical_path": "ckpt/searchqa.md",
+            "experiment_id": "searchqa_exp18f_momentum"
+          },
+          "generation": "automatic",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 1400,
+            "metric": "exact_match",
+            "score": 0.8579,
+            "solved": 1201,
+            "secondary_metrics": {}
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": true
+        }
+      ]
+    },
+    "spreadsheetbench": {
+      "default_artifact_id": "best",
+      "default_by_scope": {},
+      "artifacts": [
+        {
+          "artifact_id": "best",
+          "method": "skilladam",
+          "benchmark": "spreadsheetbench",
+          "scope": "all",
+          "role": "selected",
+          "relative_path": "spreadsheetbench/best_skill.md",
+          "source_sha256": "2aa29d86a12ecfc80488cfc6360daee584562514667f3b62fb5cdcfb5d79f7ee",
+          "public_sha256": "2aa29d86a12ecfc80488cfc6360daee584562514667f3b62fb5cdcfb5d79f7ee",
+          "source": {
+            "logical_path": "ckpt/spreadsheetbench.md",
+            "experiment_id": "spreadsheetbench_re4"
+          },
+          "generation": "automatic",
+          "model": "openai/gpt-5.5",
+          "evaluation": {
+            "evidence_level": "complete_historical_run",
+            "split": "test",
+            "cases": 280,
+            "metric": "hard",
+            "score": 0.8107,
+            "solved": 227,
+            "secondary_metrics": {
+              "execution_pass_rate": 0.9929,
+              "per_cell_pass_rate": 0.8949
+            }
+          },
+          "provisional": false,
+          "contains_optimizer_learned_answer_examples": false
+        }
+      ]
+    }
+  }
+}

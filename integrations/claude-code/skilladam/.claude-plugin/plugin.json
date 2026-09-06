@@ -1,0 +1,15 @@
+{
+  "name": "skilladam",
+  "description": "Generate tests, review patch hunks, and validate selected Skill improvements with SkillAdam.",
+  "version": "0.1.0",
+  "author": {
+    "name": "SkillAdam contributors"
+  },
+  "license": "Apache-2.0 AND MIT",
+  "keywords": [
+    "skills",
+    "optimization",
+    "evaluation",
+    "patch-review"
+  ]
+}

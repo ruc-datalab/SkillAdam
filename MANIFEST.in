@@ -1,0 +1,6 @@
+prune tests
+prune containers
+prune third_party
+exclude scripts/smoke_offline.sh
+exclude scripts/audit_public_tree.py
+exclude requirements-dev.txt

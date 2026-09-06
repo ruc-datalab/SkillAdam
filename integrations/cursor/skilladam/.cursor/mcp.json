@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "skilladam": {
+      "name": "skilladam",
+      "transport": "stdio",
+      "command": "skilladam-product-mcp",
+      "args": [],
+      "env": {"SKILLADAM_PLATFORM": "cursor"}
+    }
+  }
+}

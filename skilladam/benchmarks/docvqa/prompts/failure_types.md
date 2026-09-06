@@ -1,0 +1,5 @@
+- **evidence_miss**: The model overlooked the relevant visible region or line.
+- **near_match_confusion**: The model selected a nearby but incorrect text span.
+- **normalization_error**: The answer differed mainly in formatting, spacing, punctuation, or minor text normalization.
+- **reading_error**: The model misread the document content.
+- **other**: None of the above.

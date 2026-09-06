@@ -1,0 +1,17 @@
+# Reference template only; CLI flags remain authoritative.
+# Provider secrets belong to the explicit module:factory backend and must not
+# be stored in this file.
+schema_version: 1
+execution:
+  benchmark: "searchqa"
+  method: "skilladam"
+  split: "train"
+  validation_split: "validation"
+  model: "<model-id>"
+  backend: "<package.module:factory>"
+  backend_config: "<backend-config.json>"
+  data_root: "<data-root>"
+  output_dir: "<new-output-dir>"
+  seed: 42
+  workers: 1
+  reasoning_effort: "medium"

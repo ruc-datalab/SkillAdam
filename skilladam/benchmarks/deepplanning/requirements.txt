@@ -1,0 +1,2 @@
+# Run from the SkillAdam repository root.
+-e .[deepplanning]

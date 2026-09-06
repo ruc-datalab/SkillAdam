@@ -1,0 +1,23 @@
+SkillAdam
+Copyright (C) 2026 Tencent.  All rights reserved.
+
+The SkillAdam project is licensed under the MIT License supplied by Tencent.
+See the root LICENSE for the complete notice and terms.
+
+This distribution includes or behaviorally adapts portions of SkillOpt:
+
+  SkillOpt
+  Copyright (c) 2026 Microsoft Corporation
+  Licensed under the MIT License
+
+The DocVQA rollout system prompt is reproduced from SkillOpt. The public
+SkillOpt baseline retains the upstream optimizer's essential scheduler, gate,
+slow-update, memory, and prompt-role behavior in a provider-neutral
+implementation.
+
+The complete MIT License is retained at skilladam/baselines/skillopt/LICENSE.
+Adaptation details are recorded in skilladam/baselines/skillopt/NOTICE.
+
+Benchmark names and upstream datasets may be subject to their own licenses,
+access conditions, attribution requirements, or trademarks. No raw benchmark
+dataset is distributed as part of SkillAdam. See docs/licensing.md.

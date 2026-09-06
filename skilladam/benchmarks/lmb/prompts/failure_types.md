@@ -1,0 +1,5 @@
+- **quantifier_miss**: Missed exact quantifiers, scope, or existence/uniqueness conditions — confusing "for all" with "there exists", or "at most" with "exactly".
+- **strength_mismatch**: Preferred a weaker or stronger statement than what was actually proved — choosing "≥" when the theorem proves "=", or selecting a sufficient condition instead of a necessary one.
+- **condition_miss**: Ignored hypotheses, equality cases, or domain restrictions stated in the problem — overlooking boundary conditions, special cases, or prerequisite assumptions.
+- **option_confusion**: Confused similar answer choices or failed to compare them precisely against each other — picked an option that superficially matches without verifying fine-grained distinctions.
+- **other**: None of the above.

@@ -1,0 +1,10 @@
+{
+  "servers": {
+    "skilladam": {
+      "type": "stdio",
+      "command": "skilladam-product-mcp",
+      "args": [],
+      "env": {"SKILLADAM_PLATFORM": "github-copilot"}
+    }
+  }
+}

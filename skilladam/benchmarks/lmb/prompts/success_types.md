@@ -1,0 +1,4 @@
+- **precise_quantifier_handling**: The agent correctly interpreted quantifiers and scope (for all/there exists, at most/exactly/at least) and selected the option matching the exact logical strength of the statement.
+- **theorem_strength_calibration**: The agent correctly matched the proved result's strength to the answer — neither over-claiming nor under-claiming relative to what the theorem establishes.
+- **exhaustive_option_elimination**: The agent systematically compared all answer choices against the theorem, eliminating distractors through precise logical reasoning rather than pattern-matching a single plausible option.
+- **other**: None of the above. The success does not point to a generalizable skill rule (problem was straightforward, answer was obvious from basic definitions, or model's default reasoning sufficed).

@@ -1,0 +1,16 @@
+{
+  "api_key_env": "OPENAI_API_KEY",
+  "base_url_env": "OPENAI_BASE_URL",
+  "runtime_root_env": "SKILLADAM_DEEPPLANNING_RUNTIME",
+  "bridge_python_env": "SKILLADAM_DEEPPLANNING_PYTHON",
+  "timeout_seconds": 120,
+  "max_retries": 2,
+  "max_completion_tokens": 4096,
+  "token_limit_field": "max_completion_tokens",
+  "temperature": 1,
+  "reasoning_mode": "top_level",
+  "bridge_timeout_seconds": 7200,
+  "bridge_protocol_version": 1,
+  "require_git_revision": true,
+  "max_bridge_output_bytes": 67108864
+}

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "skilladam": {
+      "command": "skilladam-codex-product-mcp",
+      "args": [],
+      "tool_timeout_sec": 1800,
+      "env": {"SKILLADAM_PLATFORM": "codex"}
+    }
+  }
+}

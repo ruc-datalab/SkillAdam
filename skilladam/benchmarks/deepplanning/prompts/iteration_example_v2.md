@@ -1,0 +1,9 @@
+The domain and content below are illustrative only — do not transfer any
+of it into your output.
+
+```json
+{
+  "reasoning": "## Observations\n\n[1] (failure): The agent used `ocr_extract` on all pages uniformly. Two table-heavy pages returned garbled results, and the agent accepted them without retrying.\n\n[2] (failure): The agent validated outputs but used the same extraction method for scanned and text-based pages. Scanned pages produced artifacts.\n\n[3] (success): The agent classified pages using `detect_page_type`, then used `ocr_extract` only for scanned pages. It validated each result and retried failures with an alternative tool.\n\n## Patterns\n\nBoth failures share a root cause: the agent did not adapt its extraction method to the page type. The success trajectory shows a classify-then-extract pattern not captured in the skill. The Error Avoidance rule 'do not skip validation' is correct — [1] violated it (compliance issue, not a skill gap).\n\n## Proposed Changes\n\n1. **Revise** the extraction phase to include classification and suggest specific tools (evidence: [3] used `detect_page_type` then `ocr_extract`, [1] and [2] failed without this pattern).\n\nEdit balance: 1 revision.",
+  "patch": "--- a/SKILL.md\n+++ b/SKILL.md\n@@ -3,7 +3,7 @@\n ## Workflow\n \n 1. **Assess inputs**: Determine how many files need processing and whether they are text-based or scanned.\n-2. **Extract content**: Process each file. For scanned documents, expect imperfect results on the first pass.\n+2. **Classify and extract**: Identify each page's type, then extract content with a method suited to that type. When initial results are poor, retry with an alternative method before accepting partial output. Candidate tools: `detect_page_type`, `ocr_extract`, `parse_table`.\n 4. **Validate outputs**: Check every extracted record against the expected structure before finalizing.\n"
+}
+```
