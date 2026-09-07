@@ -19,14 +19,21 @@
 - **Stay in your preferred agent.** Start an optimization in the agent you already use, with the option to review individual edits.
 
 <p align="center">
+  <a href="#demo">Demo</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#usage">Usage</a> ·
-  <a href="#help-and-feedback">Help &amp; Feedback</a>
+  <a href="#citation">Citation</a>
 </p>
 
 ## News
 
 - **[2026.09]** SkillAdam is released with integrations for Codex, Claude Code, Cursor Agent, and GitHub Copilot.
+
+## Demo
+
+*Demo video coming soon.*
+
+<!-- Replace this placeholder with the demo video URL when available. -->
 
 ## Quick Start
 
@@ -117,14 +124,11 @@ Resume the SkillAdam optimization in /absolute/path/to/the/run-directory.
 
 Keep your skill in version control so you can review its history or undo changes.
 
-## Help and Feedback
+## Citation
 
-- **Installation and troubleshooting:** see the [platform guide](integrations/README.md).
-- **Models and custom API settings:** see [model configuration](integrations/README.md#models-and-authentication).
-- **Updates:** pull the latest repository version, rerun your platform's installer, and restart your agent. In VS Code, use **Developer: Reload Window**.
-- **Questions, bugs, or ideas:** open an [issue](https://github.com/ruc-datalab/SkillAdam/issues). Include your platform and a small example that shows the problem.
+*BibTeX citation coming soon.*
 
-We welcome contributions to integrations, documentation, and user experience, as well as examples of skills you have improved with SkillAdam.
+<!-- Replace this placeholder with the paper's official BibTeX citation. -->
 
 ## License
 
