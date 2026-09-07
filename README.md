@@ -1,95 +1,135 @@
-# SkillAdam
+<p align="center">
+  <img src="assets/logo.png" alt="SkillAdam" width="680">
+</p>
 
-Make your agent skills better at the tasks you care about.
-SkillAdam tests and improves an existing `SKILL.md` for your workflow.
+# SkillAdam: Better Skills for Your AI Agent
 
-**Supported platforms: Codex · Claude Code · Cursor · GitHub Copilot.**
+[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b.svg)](assets/SkillAdam.pdf)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Code Stars](https://img.shields.io/github/stars/ruc-datalab/SkillAdam?style=social&label=Code%20Stars)](https://github.com/ruc-datalab/SkillAdam)
 
-[Install](#installation) · [Use](#usage) · [Docs](#documentation)
+**Give SkillAdam a skill and tell it what you want to improve.** It tests your `SKILL.md` on relevant tasks, learns from the results, and checks proposed changes before updating the file.
+
+**Supported platforms: Codex · Claude Code · Cursor Agent · GitHub Copilot.**
+
+- **Improve skills for your workflow.** Describe your goal and provide examples of tasks your skill should handle.
+- **Learn from earlier attempts.** Use feedback from previous revisions to guide the next improvement and address recurring mistakes.
+- **Make measured changes.** Adapt the scope of each revision and keep changes that pass evaluation.
+- **Stay in your preferred agent.** Start an optimization in the agent you already use, with the option to review individual edits.
+
+<p align="center">
+  <a href="#demo">Demo</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#usage">Usage</a> ·
+  <a href="#citation">Citation</a>
+</p>
+
+## News
+
+- **[2026.09]** SkillAdam is released with integrations for Codex, Claude Code, Cursor Agent, and GitHub Copilot.
 
 ## Demo
 
 *Demo video coming soon.*
 
-<!-- Add the demo video here when available. Keep this section video-only. -->
+<!-- Replace this placeholder with the demo video URL when available. -->
 
-## Installation
+## Quick Start
 
-You need **Python 3.10+** and an installed, signed-in CLI for your chosen host.
+### Requirements
+
+- **Python 3.10+**, with `pip` and `venv`, and **Git**.
+- Your chosen agent's CLI, installed, signed in, and available on your `PATH`: `codex`, `claude`, `cursor-agent`, or `copilot`.
+- For Copilot's default VS Code integration, the **`code` CLI** is also required. For Copilot CLI only, pass `--skip-vscode-registration` to its installer.
+
+Cursor requires the **Cursor Agent CLI**; the desktop app alone is insufficient.
+
+The default setup uses your existing agent sign-in and needs no local GPU, Docker, or separate model API key. Model calls consume your platform account's quota, and skill and task content is sent to the configured model provider.
+
+### Installation
+
+Clone this repository:
 
 ```bash
 git clone https://github.com/ruc-datalab/SkillAdam.git
 cd SkillAdam
 ```
 
-Run **one** installer for the host you use.
+Run **one** installer for your platform from the repository root:
 
-macOS / Linux:
-
-```bash
-./integrations/codex/install.sh
-./integrations/claude-code/install.sh
-./integrations/cursor/install.sh
-./integrations/github-copilot/install.sh
-```
+| Platform | macOS / Linux |
+|---|---|
+| Codex | `./integrations/codex/install.sh` |
+| Claude Code | `./integrations/claude-code/install.sh` |
+| Cursor Agent | `./integrations/cursor/install.sh` |
+| GitHub Copilot | `./integrations/github-copilot/install.sh` |
 
 <details>
 <summary>Windows PowerShell</summary>
 
-```powershell
-.\integrations\codex\install.ps1
-.\integrations\claude-code\install.ps1
-.\integrations\cursor\install.ps1
-.\integrations\github-copilot\install.ps1
-```
+| Platform | Command |
+|---|---|
+| Codex | `.\integrations\codex\install.ps1` |
+| Claude Code | `.\integrations\claude-code\install.ps1` |
+| Cursor Agent | `.\integrations\cursor\install.ps1` |
+| GitHub Copilot | `.\integrations\github-copilot\install.ps1` |
 
 </details>
 
-The installer sets up the Python environment and plugin for you. To update,
-first get the latest repository version, rerun the installer, and restart your
-host. In VS Code, use `Developer: Reload Window`.
+The installer sets up a dedicated Python environment and registers SkillAdam with your agent. Restart your agent after installation; in VS Code, use **Developer: Reload Window**.
 
-Copilot's default installation needs the VS Code `code` CLI. For Copilot CLI
-only, add `--skip-vscode-registration`. More options and troubleshooting:
-[installation guide](integrations/README.md).
+For more installation options, see the [platform guide](integrations/README.md#one-step-installation).
 
 ## Usage
 
-Open the workspace containing your skill. Select the installed
-`skilladam-optimize` skill using your host's skill picker or invocation
-mechanism, then give it the file path and your goal:
+### Improve Your Skill
+
+Open the workspace containing your skill and select **`skilladam-optimize`** through your agent's skill picker or invocation mechanism. Give it the skill path and your goal:
 
 ```text
-Use SkillAdam to optimize /absolute/path/to/SKILL.md for <your goal>.
+Use SkillAdam to optimize /absolute/path/to/SKILL.md for writing concise,
+actionable code reviews that catch correctness issues and edge cases.
 ```
 
-SkillAdam creates tasks and scoring rules, tests the skill, and proposes
-improvements. **By default, all proposed edits are selected automatically;
-the original file is updated only when validation passes.**
+Your agent prepares relevant tasks and scoring rules. SkillAdam tests the current skill, proposes changes, and evaluates the revised version. **By default, proposed edits are selected automatically; your skill file is updated only when the revised version passes validation.**
 
-Want to choose the changes yourself? Include this in your request:
+You can make your request more specific by describing a recurring problem or including a task example:
+
+```text
+This skill often produces long explanations without a clear recommendation.
+Focus on making each review comment identify the problem, explain its impact,
+and suggest a concrete fix.
+```
+
+SkillAdam currently optimizes **one existing `SKILL.md` at a time**. Include any context needed to evaluate your examples: supporting skill resources and workspace files are not automatically available during test runs. See [task guidance](integrations/README.md#tasks-and-evaluation-signals) for details.
+
+### Choose Which Changes to Apply
+
+To review proposed edits yourself, include this in your request:
 
 ```text
 Before applying changes, show me the proposed edits and let me choose.
 ```
 
-If a run is interrupted, ask SkillAdam to resume using the same run directory.
-Keep your skill in version control so you can review or undo changes.
+You can accept or reject individual edits. SkillAdam then validates the selected changes before updating your skill.
 
-No separate API key is needed with the default signed-in host setup.
-Model usage still consumes your account's quota, and skill/task content is
-sent to the configured model provider. Improvement on every task is not guaranteed.
+### Continue an Interrupted Run
 
-## Documentation
+Ask your agent to resume using the same run directory:
 
-- [Plugin options, platform differences, and troubleshooting](integrations/README.md)
-- [Benchmark installation, data preparation, and reproduction](docs/reproducibility/quickstart.md)
+```text
+Resume the SkillAdam optimization in /absolute/path/to/the/run-directory.
+```
 
-## Paper
+Keep your skill in version control so you can review its history or undo changes.
 
-*arXiv link and citation coming soon.*
+## Citation
+
+*BibTeX citation coming soon.*
+
+<!-- Replace this placeholder with the paper's official BibTeX citation. -->
 
 ## License
 
-[MIT](LICENSE) · Copyright (C) 2026 Tencent. All rights reserved.
-Third-party license and attribution notices are preserved; see [NOTICE](NOTICE).
+SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tencent. All rights reserved. Third-party attribution is preserved in [NOTICE](NOTICE).
