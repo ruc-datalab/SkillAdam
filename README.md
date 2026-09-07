@@ -19,6 +19,12 @@
 - **Stay in your preferred agent.** Start an optimization in the agent you already use, with the option to review individual edits.
 
 <p align="center">
+  <a href="assets/skilladam-framework.pdf">
+    <img src="assets/skilladam-framework.png" alt="SkillAdam framework: task rollouts, optimization memory and adaptive edits, followed by skill updates." width="900">
+  </a>
+</p>
+
+<p align="center">
   <a href="#demo">Demo</a> ·
   <a href="#quick-start">Quick Start</a> ·
   <a href="#usage">Usage</a> ·
