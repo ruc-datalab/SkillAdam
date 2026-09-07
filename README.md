@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="SkillAdam" width="680">
+  <img src="assets/logo-readme.svg" alt="SkillAdam" width="480">
 </p>
 
 # SkillAdam: Better Skills for Your AI Agent
