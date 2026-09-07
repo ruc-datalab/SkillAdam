@@ -37,9 +37,7 @@
 
 ## Demo
 
-*Demo video coming soon.*
-
-<!-- Replace this placeholder with the demo video URL when available. -->
+https://github.com/user-attachments/assets/a15049ee-90b5-4cda-a270-7628a60f76ed
 
 ## Quick Start
 
