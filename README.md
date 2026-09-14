@@ -4,7 +4,7 @@
 
 # SkillAdam: Better Skills for Your AI Agent
 
-[![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b.svg)](assets/SkillAdam.pdf)
+[![arXiv](https://img.shields.io/badge/arXiv-2609.08944-b31b1b.svg)](https://arxiv.org/abs/2609.08944)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code Stars](https://img.shields.io/github/stars/ruc-datalab/SkillAdam?style=social&label=Code%20Stars)](https://github.com/ruc-datalab/SkillAdam)
@@ -33,6 +33,7 @@
 
 ## News
 
+- **[2026.09.08]** Our paper, [SkillAdam: Stable and Efficient Skill Evolution for Agents](https://arxiv.org/abs/2609.08944), is now available on arXiv.
 - **[2026.09]** SkillAdam is released with integrations for Codex, Claude Code, Cursor Agent, and GitHub Copilot.
 
 ## Demo
@@ -130,9 +131,19 @@ Keep your skill in version control so you can review its history or undo changes
 
 ## Citation
 
-*BibTeX citation coming soon.*
+If you find SkillAdam useful, please cite our [paper](https://arxiv.org/abs/2609.08944):
 
-<!-- Replace this placeholder with the paper's official BibTeX citation. -->
+```bibtex
+@misc{li2026skilladam,
+  title={SkillAdam: Stable and Efficient Skill Evolution for Agents},
+  author={Gaoyuan Li and Meihao Fan and Yizhe Liu and Shaolei Zhang and Ju Fan and Siyi Wang and Jiaheng Hou and Xudong Weng and Honghan Tian and Zang Li},
+  year={2026},
+  eprint={2609.08944},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2609.08944}
+}
+```
 
 ## License
 
