@@ -149,3 +149,9 @@ If you find SkillAdam useful, please cite our [paper](https://arxiv.org/abs/2609
 ## License
 
 SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tencent. All rights reserved. Third-party attribution is preserved in [NOTICE](NOTICE).
+
+## Community
+
+<p align="center">
+  <a href="assets/feishu.jpg"><img src="assets/feishu.jpg" alt="RUC-DataLab Feishu group" width="360"></a>
+</p>
