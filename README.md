@@ -12,7 +12,7 @@
 
 **Give SkillAdam a skill and tell it what you want to improve.** It tests your `SKILL.md` on relevant tasks, learns from the results, and checks proposed changes before updating the file.
 
-**Supported platforms: Codex · Claude Code · Cursor Agent · GitHub Copilot.**
+**Supported platforms: Codex 路 Claude Code 路 Cursor Agent 路 GitHub Copilot.**
 
 - **Improve skills for your workflow.** Describe your goal and provide examples of tasks your skill should handle.
 - **Learn from earlier attempts.** Use feedback from previous revisions to guide the next improvement and address recurring mistakes.
@@ -26,9 +26,9 @@
 </p>
 
 <p align="center">
-  <a href="#demo">Demo</a> ·
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#usage">Usage</a> ·
+  <a href="#demo">Demo</a> 路
+  <a href="#quick-start">Quick Start</a> 路
+  <a href="#usage">Usage</a> 路
   <a href="#citation">Citation</a>
 </p>
 
@@ -154,10 +154,10 @@ SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tence
 
 If you like SkillAdam, give it a GitHub Star ⭐
 
-[![Star History Chart](https://star-history.dera.page/svg?repos=ruc-datalab/SkillAdam&type=date&legend=top-left)](https://star-history.dera.page/#ruc-datalab/SkillAdam&type=date&legend=top-left)
+Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users!
 
-Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users.
-
-<p align="center">
-  <img src="assets/feishu.jpg" alt="RUC-DataLab Feishu group" width="35%">
+<p align="center" width="100%">
+<img src="./assets/feishu.jpg" alt="RUC-DataLab Feishu group" style="width: 35%; min-width: 300px; display: block; margin: auto;">
 </p>
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ruc-datalab/SkillAdam&type=Date&legend=top-left)](https://star-history.com/#ruc-datalab/SkillAdam&type=date&legend=top-left)
