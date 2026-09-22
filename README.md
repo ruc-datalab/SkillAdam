@@ -12,7 +12,7 @@
 
 **Give SkillAdam a skill and tell it what you want to improve.** It tests your `SKILL.md` on relevant tasks, learns from the results, and checks proposed changes before updating the file.
 
-**Supported platforms: Codex 路 Claude Code 路 Cursor Agent 路 GitHub Copilot.**
+**Supported platforms: Codex · Claude Code · Cursor Agent · GitHub Copilot.**
 
 - **Improve skills for your workflow.** Describe your goal and provide examples of tasks your skill should handle.
 - **Learn from earlier attempts.** Use feedback from previous revisions to guide the next improvement and address recurring mistakes.
@@ -26,9 +26,9 @@
 </p>
 
 <p align="center">
-  <a href="#demo">Demo</a> 路
-  <a href="#quick-start">Quick Start</a> 路
-  <a href="#usage">Usage</a> 路
+  <a href="#demo">Demo</a> ·
+  <a href="#quick-start">Quick Start</a> ·
+  <a href="#usage">Usage</a> ·
   <a href="#citation">Citation</a>
 </p>
 
