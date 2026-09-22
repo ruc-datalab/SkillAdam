@@ -152,12 +152,12 @@ SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tence
 
 ## Misc
 
-If you like SkillAdam, give it a GitHub Star ⭐
-
-Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users!
+Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users.
 
 <p align="center" width="100%">
 <img src="./assets/feishu.jpg" alt="RUC-DataLab Feishu group" style="width: 35%; min-width: 300px; display: block; margin: auto;">
 </p>
+
+If you like SkillAdam, give it a GitHub Star ⭐
 
 [![Star History Chart](https://api.star-history.com/svg?repos=ruc-datalab/SkillAdam&type=Date&legend=top-left)](https://star-history.com/#ruc-datalab/SkillAdam&type=date&legend=top-left)
