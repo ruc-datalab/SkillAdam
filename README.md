@@ -8,6 +8,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code Stars](https://img.shields.io/github/stars/ruc-datalab/SkillAdam?style=social&label=Code%20Stars)](https://github.com/ruc-datalab/SkillAdam)
+[![feishu](https://img.shields.io/badge/Feishu-%E5%8A%A0%E5%85%A5RUC--DataLab%E4%BA%A4%E6%B5%81%E7%BE%A4-black?logo=lark&logoColor=00D6B9)](./assets/feishu.jpg)
 
 **Give SkillAdam a skill and tell it what you want to improve.** It tests your `SKILL.md` on relevant tasks, learns from the results, and checks proposed changes before updating the file.
 
