@@ -150,8 +150,14 @@ If you find SkillAdam useful, please cite our [paper](https://arxiv.org/abs/2609
 
 SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tencent. All rights reserved. Third-party attribution is preserved in [NOTICE](NOTICE).
 
-## Community
+## Misc
+
+If you like SkillAdam, give it a GitHub Star ⭐
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ruc-datalab/SkillAdam&type=date&legend=top-left)](https://star-history.dera.page/#ruc-datalab/SkillAdam&type=date&legend=top-left)
+
+Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users.
 
 <p align="center">
-  <a href="assets/feishu.jpg"><img src="assets/feishu.jpg" alt="RUC-DataLab Feishu group" width="360"></a>
+  <img src="assets/feishu.jpg" alt="RUC-DataLab Feishu group" width="35%">
 </p>
