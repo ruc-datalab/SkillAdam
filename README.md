@@ -8,7 +8,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Code Stars](https://img.shields.io/github/stars/ruc-datalab/SkillAdam?style=social&label=Code%20Stars)](https://github.com/ruc-datalab/SkillAdam)
-[![feishu](https://img.shields.io/badge/Feishu-%E5%8A%A0%E5%85%A5RUC--DataLab%E4%BA%A4%E6%B5%81%E7%BE%A4-black?logo=lark&logoColor=00D6B9)](./assets/feishu.jpg)
+[![wecom](https://img.shields.io/badge/WeCom-%E5%8A%A0%E5%85%A5Data%2BAI%E4%BA%A4%E6%B5%81%E7%BE%A4-black?logo=wechat&logoColor=07C160)](./assets/wecom.jpg)
 
 **Give SkillAdam a skill and tell it what you want to improve.** It tests your `SKILL.md` on relevant tasks, learns from the results, and checks proposed changes before updating the file.
 
@@ -152,10 +152,10 @@ SkillAdam is released under the [MIT License](LICENSE). Copyright (C) 2026 Tence
 
 ## Misc
 
-Welcome to join the [RUC-DataLab Feishu group](./assets/feishu.jpg), chat and share ideas with other users.
+Welcome to join the [Data+AI Enterprise WeChat group](./assets/wecom.jpg), chat and share ideas with other users.
 
 <p align="center" width="100%">
-<img src="./assets/feishu.jpg" alt="RUC-DataLab Feishu group" style="width: 35%; min-width: 300px; display: block; margin: auto;">
+<img src="./assets/wecom.jpg" alt="Data+AI Enterprise WeChat group" style="width: 35%; min-width: 300px; display: block; margin: auto;">
 </p>
 
 If you like SkillAdam, give it a GitHub Star ⭐
