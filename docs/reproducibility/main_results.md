@@ -87,8 +87,8 @@ settings below describe feedback updates rather than a separate epoch count.
 | DocVQA | 15 | 11/11 | 11 | sequential | deterministic | 110000 | base 4, min 1 |
 | SearchQA | 15 | 60/40 | 10 | sequential | deterministic | 200000 | base 4, min 1 |
 | SpreadsheetBench | 15 | 15/15 | 99 | seed-42 pool shuffle + sequential | LLM | 96000 | base 4, min 2 |
-| OfficeQA | 10 | 15/5 | 3 | sequential | LLM | 110000 | off |
-| LMB | 10 | 15/5 | 3 | sequential | deterministic | 150000 | off |
+| OfficeQA | 10 | 15/5 | 3 | sequential | LLM | 110000 | base 4, min 1 |
+| LMB | 10 | 15/5 | 3 | sequential | deterministic | 150000 | base 4, min 1 |
 
 The context limit uses a conservative character-based estimate. Exceeding it
 resets only the optimizer conversation, preserving the current skill,

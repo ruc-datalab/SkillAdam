@@ -463,7 +463,13 @@
         "reasoning_effort": "medium",
         "temperature": 1.0,
         "momentum": true,
-        "adaptive_edit_budget": false,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "metric": "exact_match",
+          "v_max": 0.05
+        },
         "gate": {
           "profile": "lmb-main-result",
           "exact_match_gain": 0.08,
@@ -558,7 +564,13 @@
         "reasoning_effort": "medium",
         "temperature": 1.0,
         "momentum": true,
-        "adaptive_edit_budget": false,
+        "adaptive_edit_budget": {
+          "base": 4,
+          "minimum": 1,
+          "beta": 0.9,
+          "metric": "em",
+          "v_max": 0.05
+        },
         "gate": {
           "profile": "officeqa-main-result",
           "exact_match_gain": 0.08,
