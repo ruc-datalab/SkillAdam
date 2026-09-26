@@ -43,8 +43,8 @@ python scripts/reproduce_cost_table.py \
   --prompt-weights <prompt-weights.json>
 ```
 
-Run ledgers and reference test tables are not bundled. Supply ledgers from
-the runs you want to compare; the scripts calculate the table without
+Run ledgers are not bundled. Supply ledgers from your new runs;
+the scripts calculate the comparison without
 making provider calls. See `python -m skilladam cost-report --help` for
 available grouping and pricing options.
 

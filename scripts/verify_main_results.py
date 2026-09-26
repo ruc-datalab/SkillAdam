@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate complete paper-profile outputs and compare reference scores."""
+"""Validate current-run metric values and aggregate evaluation sample counts."""
 
 from __future__ import annotations
 
@@ -21,8 +21,9 @@ from skilladam.experiments.result_verification import (
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Validate evaluation coverage and compare observed metrics with "
-            "the frozen paper main-result references. No API is called."
+            "Validate saved metric values and aggregate sample counts, then "
+            "summarize the current run. Case identities are not verified. "
+            "No API is called."
         )
     )
     parser.add_argument("--output-root", required=True, type=Path)
@@ -38,14 +39,6 @@ def build_parser() -> argparse.ArgumentParser:
         choices=PUBLIC_RESULT_METHODS,
         help="Repeat to select methods; default is all three.",
     )
-    parser.add_argument(
-        "--max-delta-points",
-        type=float,
-        help=(
-            "Optional absolute score-delta tolerance in percentage points. "
-            "Without this flag scores are reported but never hard-gated."
-        ),
-    )
     parser.add_argument("--report", type=Path)
     return parser
 
@@ -56,7 +49,6 @@ def main(argv: list[str] | None = None) -> int:
         args.output_root,
         benchmarks=args.benchmark,
         methods=args.method or PUBLIC_RESULT_METHODS,
-        max_delta_points=args.max_delta_points,
     )
     text = json.dumps(report, indent=2, sort_keys=True) + "\n"
     if args.report is not None:
@@ -66,7 +58,7 @@ def main(argv: list[str] | None = None) -> int:
             raise FileExistsError("refusing to overwrite existing report")
         args.report.write_text(text, encoding="utf-8")
     print(text, end="")
-    return 1 if report["tolerance_passed"] is False else 0
+    return 0
 
 
 if __name__ == "__main__":

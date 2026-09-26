@@ -27,6 +27,12 @@ and [DeepPlanning guide](../benchmarks/deepplanning.md).
 
 ## Preview a Run
 
+The examples below are custom-run templates, not the formal experiment
+configuration. For the main-result protocol, generate commands from the
+[versioned profile](main_results.md) and pass strict preflight with
+`ready_for_api=true` before execution. A generic backend template or CLI
+dry-run does not establish that provider/model/request settings match it.
+
 Add `--dry-run` to validate the adapter, data, case pool, initial skill,
 backend factory, hyperparameters, and output conflicts without rollouts,
 model generation, or output-directory creation.

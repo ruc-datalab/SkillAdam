@@ -34,8 +34,8 @@ The pinned source is `lmms-lab/DocVQA` revision
 validation split. Images and split files remain external. See
 [datasets](../datasets.md), [licensing](../licensing.md), and
 [paper settings](../reproducibility/main_results.md).
-The shared rollout system prompt retains SkillOpt's MIT attribution. Historical
-usage records may be incomplete; missing counters are unknown, not zero.
+The shared rollout system prompt retains SkillOpt's MIT attribution.
+Missing provider usage counters are unknown, not zero.
 
 ## Check Data and Configuration
 

@@ -1,4 +1,4 @@
-"""Compare complete evaluation outputs with frozen paper references."""
+"""Validate saved metric values and sample counts for current experiment runs."""
 
 from __future__ import annotations
 
@@ -25,9 +25,8 @@ def verify_main_result_outputs(
     *,
     benchmarks: Iterable[str] | None = None,
     methods: Iterable[str] = PUBLIC_RESULT_METHODS,
-    max_delta_points: float | None = None,
 ) -> dict[str, Any]:
-    """Validate coverage and report score deltas without rerunning models."""
+    """Summarize current metrics, checking aggregate counts but not case IDs."""
 
     profile = load_main_result_profile()
     selected_benchmarks = tuple(
@@ -46,13 +45,6 @@ def verify_main_result_outputs(
         or any(name not in PUBLIC_RESULT_METHODS for name in selected_methods)
     ):
         raise ValueError("result verification method selection is invalid")
-    if max_delta_points is not None and (
-        isinstance(max_delta_points, bool)
-        or not isinstance(max_delta_points, (int, float))
-        or not math.isfinite(float(max_delta_points))
-        or max_delta_points < 0
-    ):
-        raise ValueError("max_delta_points must be finite and non-negative")
 
     rows: list[dict[str, Any]] = []
     for benchmark in selected_benchmarks:
@@ -88,18 +80,7 @@ def verify_main_result_outputs(
                         f"expected {expected_count}"
                     )
                 details = {}
-            reference = float(
-                benchmark_profile.evaluation[
-                    "paper_results_percent"
-                ][method]
-            )
             measured_percent = measured * 100.0
-            delta = measured_percent - reference
-            within_tolerance = (
-                None
-                if max_delta_points is None
-                else abs(delta) <= float(max_delta_points)
-            )
             rows.append(
                 {
                     "benchmark": benchmark,
@@ -108,26 +89,17 @@ def verify_main_result_outputs(
                     "sample_count": sample_count,
                     "measured_percent": measured_percent,
                     "measured_rounded_1dp": round(measured_percent, 1),
-                    "paper_reference_percent": reference,
-                    "delta_points": delta,
-                    "within_tolerance": within_tolerance,
                     **details,
                 }
             )
-    tolerance_passed = (
-        None
-        if max_delta_points is None
-        else all(row["within_tolerance"] for row in rows)
-    )
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "profile_id": profile.profile_id,
-        "comparison_semantics": (
-            "configuration-aligned observed scores versus paper reference; "
-            "generation is not expected to be byte-identical"
+        "validation_semantics": (
+            "observed metric values and aggregate sample counts checked "
+            "against the experiment configuration; "
+            "case identities are not verified"
         ),
-        "max_delta_points": max_delta_points,
-        "tolerance_passed": tolerance_passed,
         "rows": rows,
     }
 

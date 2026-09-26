@@ -6,7 +6,6 @@ from dataclasses import dataclass
 from hashlib import sha256
 from importlib import resources
 import json
-import math
 from pathlib import PurePosixPath
 import re
 from types import MappingProxyType
@@ -38,19 +37,6 @@ class SkillArtifactSource:
 
 
 @dataclass(frozen=True, slots=True)
-class SkillArtifactEvaluation:
-    """Historical evidence associated with one skill."""
-
-    evidence_level: str
-    split: str
-    cases: int
-    metric: str
-    score: float | None
-    solved: int | None
-    secondary_metrics: Mapping[str, float]
-
-
-@dataclass(frozen=True, slots=True)
 class SkillArtifact:
     """Immutable metadata for one packaged Markdown artifact."""
 
@@ -65,8 +51,6 @@ class SkillArtifact:
     source: SkillArtifactSource
     generation: str
     model: str
-    evaluation: SkillArtifactEvaluation
-    provisional: bool
     contains_optimizer_learned_answer_examples: bool
 
 
@@ -256,7 +240,7 @@ def _parse_manifest(payload: Any) -> SkillManifest:
     if (
         isinstance(schema_version, bool)
         or not isinstance(schema_version, int)
-        or schema_version != 1
+        or schema_version != 2
     ):
         raise SkillArtifactIntegrityError(
             f"unsupported skill manifest schema_version {schema_version!r}"
@@ -286,7 +270,7 @@ def _parse_manifest(payload: Any) -> SkillManifest:
         )
         benchmarks[benchmark_name] = entry
     return SkillManifest(
-        schema_version=1,
+        schema_version=2,
         method=method,
         benchmarks=MappingProxyType(benchmarks),
     )
@@ -447,18 +431,9 @@ def _parse_artifact(
             f"{label}.source.experiment_id",
         ),
     )
-    evaluation = _parse_evaluation(
-        root.get("evaluation"),
-        f"{label}.evaluation",
-    )
-    provisional = root.get("provisional")
     learned_examples = root.get(
         "contains_optimizer_learned_answer_examples"
     )
-    if not isinstance(provisional, bool):
-        raise SkillArtifactIntegrityError(
-            f"{label}.provisional must be a boolean"
-        )
     if not isinstance(learned_examples, bool):
         raise SkillArtifactIntegrityError(
             f"{label}.contains_optimizer_learned_answer_examples "
@@ -488,56 +463,7 @@ def _parse_artifact(
             f"{label}.generation",
         ),
         model=_text(root.get("model"), f"{label}.model"),
-        evaluation=evaluation,
-        provisional=provisional,
         contains_optimizer_learned_answer_examples=learned_examples,
-    )
-
-
-def _parse_evaluation(
-    payload: Any,
-    label: str,
-) -> SkillArtifactEvaluation:
-    root = _object(payload, label)
-    cases = _positive_int(root.get("cases"), f"{label}.cases")
-    solved_value = root.get("solved")
-    solved = (
-        None
-        if solved_value is None
-        else _non_negative_int(solved_value, f"{label}.solved")
-    )
-    if solved is not None and solved > cases:
-        raise SkillArtifactIntegrityError(
-            f"{label}.solved cannot exceed cases"
-        )
-    score_value = root.get("score")
-    score = (
-        None
-        if score_value is None
-        else _finite_number(score_value, f"{label}.score")
-    )
-    raw_secondary = _object(
-        root.get("secondary_metrics"),
-        f"{label}.secondary_metrics",
-    )
-    secondary = {
-        _text(name, f"{label}.secondary metric name"): _finite_number(
-            value,
-            f"{label}.secondary_metrics[{name!r}]",
-        )
-        for name, value in raw_secondary.items()
-    }
-    return SkillArtifactEvaluation(
-        evidence_level=_text(
-            root.get("evidence_level"),
-            f"{label}.evidence_level",
-        ),
-        split=_text(root.get("split"), f"{label}.split"),
-        cases=cases,
-        metric=_text(root.get("metric"), f"{label}.metric"),
-        score=score,
-        solved=solved,
-        secondary_metrics=MappingProxyType(secondary),
     )
 
 
@@ -594,40 +520,10 @@ def _portable_logical_path(value: Any, label: str) -> str:
     return text
 
 
-def _positive_int(value: Any, label: str) -> int:
-    if isinstance(value, bool) or not isinstance(value, int) or value <= 0:
-        raise SkillArtifactIntegrityError(
-            f"{label} must be a positive integer"
-        )
-    return value
-
-
-def _non_negative_int(value: Any, label: str) -> int:
-    if isinstance(value, bool) or not isinstance(value, int) or value < 0:
-        raise SkillArtifactIntegrityError(
-            f"{label} must be a non-negative integer"
-        )
-    return value
-
-
-def _finite_number(value: Any, label: str) -> float:
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        raise SkillArtifactIntegrityError(
-            f"{label} must be numeric"
-        )
-    number = float(value)
-    if not math.isfinite(number):
-        raise SkillArtifactIntegrityError(
-            f"{label} must be finite"
-        )
-    return number
-
-
 __all__ = [
     "BenchmarkSkillArtifacts",
     "SkillArtifact",
     "SkillArtifactError",
-    "SkillArtifactEvaluation",
     "SkillArtifactIntegrityError",
     "SkillArtifactNotFoundError",
     "SkillArtifactSource",

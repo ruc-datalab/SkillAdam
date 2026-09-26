@@ -1,13 +1,11 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "profile_id": "paper-main-results-v1",
   "seed": 42,
   "authority": {
     "title": "Gradient-Inspired Skill Self-Evolution for LLM Agents",
     "pdf_sha256": "e65258c6f3e4114eeb397438ddf9c895dbef4887f073189ecc3d33faae22d70a",
-    "results_source": "paper tables 1-4",
-    "configuration_source": "archived formal-run configs",
-    "interpretation": "Paper scores, selected artifacts, and training configurations are separate provenance records."
+    "configuration_source": "archived formal-run configs"
   },
   "common": {
     "runtime": "benchmark_native_direct_chat",
@@ -17,8 +15,7 @@
     "skilladam_primary_epochs": 1,
     "skilladam_iterations_vary_by_benchmark": true,
     "skillopt_epochs": 4,
-    "stage0_shared_by_methods": true,
-    "result_reproduction_claim": "configuration_reproduction_not_byte_identical_generation"
+    "stage0_shared_by_methods": true
   },
   "benchmarks": {
     "alfworld": {
@@ -66,7 +63,6 @@
         "include_partial_final_batch": true,
         "max_iterations": 6,
         "min_iterations": 6,
-        "archived_iterations": 6,
         "max_consecutive_failures": 99,
         "workers": 10,
         "reasoning_effort": "medium",
@@ -112,12 +108,7 @@
         "metric": "hard",
         "test_cases": 134,
         "workers": 32,
-        "request_timeout_seconds": 300,
-        "paper_results_percent": {
-          "baseline": 83.6,
-          "skillopt": 87.3,
-          "skilladam": 89.6
-        }
+        "request_timeout_seconds": 300
       },
       "selected_artifacts": {
         "all": "ce8165b0e5763ef82f6ecd9602850ee910f7ceff04aba61bc6fe3b1393b304d4"
@@ -273,31 +264,7 @@
         "metric": "hard",
         "test_cases": 120,
         "workers": 5,
-        "request_timeout_seconds": 600,
-        "paper_results_percent": {
-          "baseline": 15.8,
-          "skillopt": 21.7,
-          "skilladam": 28.3
-        },
-        "paper_results_by_domain_percent": {
-          "baseline": {
-            "shopping": 31.7,
-            "travel": 0.0
-          },
-          "skillopt": {
-            "shopping": 41.7,
-            "travel": 1.7
-          },
-          "skilladam": {
-            "shopping": 45.0,
-            "travel": 11.7
-          }
-        },
-        "paper_skilladam_shopping_by_level_percent": {
-          "shopping_level1": 52.0,
-          "shopping_level2": 36.0,
-          "shopping_level3": 50.0
-        }
+        "request_timeout_seconds": 600
       },
       "selected_artifacts": {
         "shopping_level1": "144cd6f5a9550e7a4901c9ffd6c819d67a5d1ca1f4c9f238563df8fe17aef294",
@@ -354,7 +321,6 @@
         "max_iterations": 11,
         "min_iterations": 11,
         "max_consecutive_failures": 11,
-        "archived_iterations": 11,
         "workers": 60,
         "reasoning_effort": "medium",
         "temperature": 1.0,
@@ -400,12 +366,7 @@
         "metric": "hard",
         "test_cases": 374,
         "workers": 60,
-        "request_timeout_seconds": 300,
-        "paper_results_percent": {
-          "baseline": 90.0,
-          "skillopt": 91.2,
-          "skilladam": 92.3
-        }
+        "request_timeout_seconds": 300
       },
       "selected_artifacts": {
         "all": "f653e17bdc735d598b3eb43fa569215e5617c2a94e0b7a1b830c3849ceb38549"
@@ -458,7 +419,6 @@
         "max_iterations": 15,
         "min_iterations": 5,
         "max_consecutive_failures": 3,
-        "archived_iterations": 5,
         "workers": 20,
         "reasoning_effort": "medium",
         "temperature": 1.0,
@@ -501,12 +461,7 @@
         "metric": "exact_match",
         "test_cases": 124,
         "workers": 16,
-        "request_timeout_seconds": 300,
-        "paper_results_percent": {
-          "baseline": 67.7,
-          "skillopt": 66.9,
-          "skilladam": 67.7
-        }
+        "request_timeout_seconds": 300
       },
       "selected_artifacts": {
         "all": "92cf20579e32fd14d3e0ffe10c9fdc0f979e43baaf2cc553528b0fb9e6a4d7c1"
@@ -559,7 +514,6 @@
         "max_iterations": 15,
         "min_iterations": 5,
         "max_consecutive_failures": 3,
-        "archived_iterations": 8,
         "workers": 4,
         "reasoning_effort": "medium",
         "temperature": 1.0,
@@ -604,12 +558,7 @@
         "metric": "em",
         "test_cases": 172,
         "workers": 4,
-        "request_timeout_seconds": 300,
-        "paper_results_percent": {
-          "baseline": 65.7,
-          "skillopt": 72.1,
-          "skilladam": 72.1
-        }
+        "request_timeout_seconds": 300
       },
       "selected_artifacts": {
         "all": "b5a7f2cc84f8ef529e4f8d2d625d4b2aba2311c4460c6328af677542858ff49a"
@@ -669,7 +618,6 @@
         "max_iterations": 60,
         "min_iterations": 40,
         "max_consecutive_failures": 10,
-        "archived_iterations": 40,
         "workers": 3,
         "reasoning_effort": "medium",
         "temperature": 1.0,
@@ -714,12 +662,7 @@
         "metric": "exact_match",
         "test_cases": 1400,
         "workers": 3,
-        "request_timeout_seconds": 600,
-        "paper_results_percent": {
-          "baseline": 72.1,
-          "skillopt": 87.3,
-          "skilladam": 87.5
-        }
+        "request_timeout_seconds": 600
       },
       "selected_artifacts": {
         "all": "b863e2f7d02d7825083c99766694ba3c43e2c761d3029f6437673d552d136134"
@@ -777,7 +720,6 @@
         "max_iterations": 15,
         "min_iterations": 15,
         "max_consecutive_failures": 99,
-        "archived_iterations": 8,
         "workers": 4,
         "reasoning_effort": "medium",
         "temperature": 1.0,
@@ -825,12 +767,7 @@
         "metric": "hard",
         "test_cases": 280,
         "workers": 4,
-        "request_timeout_seconds": 300,
-        "paper_results_percent": {
-          "baseline": 67.9,
-          "skillopt": 80.7,
-          "skilladam": 81.1
-        }
+        "request_timeout_seconds": 300
       },
       "selected_artifacts": {
         "all": "2aa29d86a12ecfc80488cfc6360daee584562514667f3b62fb5cdcfb5d79f7ee"

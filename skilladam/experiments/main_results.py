@@ -12,13 +12,12 @@ from skilladam.benchmarks.registry import list_benchmarks
 
 
 _PROFILE_RESOURCE = "main_results.json"
-_METHODS = frozenset({"baseline", "skillopt", "skilladam"})
 _PROVIDERS = frozenset({"openrouter", "venus"})
 
 
 @dataclass(frozen=True, slots=True)
 class BenchmarkMainResultProfile:
-    """Immutable configuration and paper references for one benchmark."""
+    """Immutable experiment settings and artifact identities for one benchmark."""
 
     name: str
     provider: str
@@ -58,7 +57,7 @@ def load_main_result_profile() -> MainResultProfile:
     except (OSError, UnicodeError, json.JSONDecodeError) as exc:
         raise ValueError("main-result profile is missing or invalid") from exc
     root = _object(payload, "profile")
-    if root.get("schema_version") != 2:
+    if root.get("schema_version") != 3:
         raise ValueError("unsupported main-result profile schema")
     profile_id = _text(root.get("profile_id"), "profile_id")
     seed = _positive_int(root.get("seed"), "seed", allow_zero=True)
@@ -80,7 +79,7 @@ def load_main_result_profile() -> MainResultProfile:
         benchmark = _parse_benchmark(name, raw_benchmarks[name], seed=seed)
         benchmarks[name] = benchmark
     return MainResultProfile(
-        schema_version=2,
+        schema_version=3,
         profile_id=profile_id,
         seed=seed,
         authority=authority,
@@ -200,21 +199,6 @@ def _parse_benchmark(
             raise ValueError(
                 "deepplanning travel conversion must use gpt-4.1"
             )
-    paper_results = _object(
-        evaluation.get("paper_results_percent"),
-        f"{name}.evaluation.paper_results_percent",
-    )
-    if set(paper_results) != _METHODS:
-        raise ValueError(
-            f"{name} paper results must cover baseline/skillopt/skilladam"
-        )
-    for method, value in paper_results.items():
-        if (
-            isinstance(value, bool)
-            or not isinstance(value, (int, float))
-            or not 0.0 <= float(value) <= 100.0
-        ):
-            raise ValueError(f"{name}.{method} paper result is invalid")
     if not artifacts:
         raise ValueError(f"{name} must declare selected artifacts")
     for scope, digest in artifacts.items():

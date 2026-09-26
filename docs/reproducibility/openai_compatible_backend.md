@@ -5,7 +5,9 @@ It is an execution transport, not a provider selection policy: callers choose
 the model, service address, credentials, reasoning mapping, and token-limit
 field explicitly.
 
-The dry-run examples validate configuration without evaluating model quality.
+The dry-run examples validate custom configuration without evaluating model
+quality. They do not certify the paper experiment settings. For formal runs,
+use the [main-result backend templates and strict preflight](main_results.md#generate-the-command-matrix).
 
 ## Supported Benchmarks
 
@@ -44,8 +46,11 @@ skilladam.backends.openai_compatible:create_backend
 ```
 
 Use
-`configs/backends/openai_compatible.example.json` as the strict allowlisted
-configuration. It contains environment variable names, not their values.
+`configs/backends/openai_compatible.example.json` as an allowlisted
+custom-run configuration. Its 4,096-token output limit and top-level reasoning
+mapping differ from the formal OpenRouter profile (16,384 output tokens and
+nested reasoning in `extra_body`). It contains environment variable names,
+not their values.
 Set the required values in the calling process:
 
 ```bash
@@ -418,6 +423,11 @@ enters a gate. A provider may omit trustworthy usage for a failed call, so
 its missing token cost cannot be reconstructed.
 
 ## Before Real Execution
+
+For formal main-result experiments, first pass strict
+`scripts/preflight_main_results.py` validation with `ready_for_api=true` using
+the formal backend templates. Run with those same settings afterward; the
+generic examples above are not an alternative to that validation.
 
 Before removing `--dry-run`, review and record:
 

@@ -130,6 +130,11 @@ Resume the SkillAdam optimization in /absolute/path/to/the/run-directory.
 
 Keep your skill in version control so you can review its history or undo changes.
 
+For benchmark experiments, follow the [reproduction guide](docs/reproducibility/main_results.md):
+use the formal backend configurations and pass strict preflight before real
+execution. Generic backend examples are for custom runs. Training and evaluation
+produce new results; no historical score table is used for comparison.
+
 ## Citation
 
 If you find SkillAdam useful, please cite our [paper](https://arxiv.org/abs/2609.08944):

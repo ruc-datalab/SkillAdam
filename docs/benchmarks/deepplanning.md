@@ -15,7 +15,8 @@ DeepPlanning preserves four separate scopes:
 The reproducible SkillAdam optimizer is E2: Momentum, optimization memory, and
 Adaptive Edit Budget. Its formal Sonnet 4.5 path also enables prompt cache
 breakpoints for the stable system prompt, accumulated message prefix, and
-tool schema. The selected four-scope skill and result artifacts are E1.
+tool schema. Formal evaluation uses the final skill generated in that scope's
+new training run.
 SkillOpt remains an independently stateful pipeline.
 
 ## Rollout
@@ -40,8 +41,8 @@ personalized score gains `0.03/0.08` with maximum drops `0.05/0.08`.
 
 Stage0 is scope-aware and must never combine shopping levels or travel into
 one universal skill. Each scope runs Stage0 once and passes that exact
-`initial_skill.md` to both SkillAdam and SkillOpt. The four checked-in best
-skills remain separate and are evaluation/quick-start artifacts, not training
+`initial_skill.md` to both SkillAdam and SkillOpt. The four packaged
+skills remain optional standalone evaluation inputs, not training
 initializers.
 
 ## Data Boundary
@@ -99,7 +100,10 @@ See [validation checks](../testing.md) for a small end-to-end check.
 The backend reference must use the checked-in
 `skilladam.backends.deepplanning_official:create_backend` factory, expressed
 through the standard `module:factory` CLI boundary. A no-write SkillAdam
-configuration check for one scope is:
+custom configuration check for one scope is shown below. Its generic backend
+template is not the formal paper configuration; it can have different
+temperature, reasoning, and token-limit settings. Use the paper plan at the
+end of this guide and strict preflight for formal experiments.
 
 ```bash
 python -m skilladam run \
@@ -157,6 +161,9 @@ default. A real paper-profile run also requires environment-owned `VENUS_API_KEY
 `SKILLADAM_DEEPPLANNING_PYTHON` values. Every agent request, failed retry, and
 travel conversion request contributes to the shared usage ledger; unavailable
 provider counters remain `null`. No real API or official split is executed
-by the default planning command. Review the
+by the default planning command. Run [strict main-result preflight](../reproducibility/main_results.md#generate-the-command-matrix)
+with these same configuration and data paths, require `ready_for_api=true`,
+and review the
 [API availability checks](../testing.md#real-api-availability-checks) before
-adding `--execute --confirm-api-costs`.
+adding `--execute --confirm-api-costs`. A generic dry-run is not a substitute
+for this provider/model/request-settings audit.

@@ -3,41 +3,15 @@
 ## Versioned Profile
 
 `skilladam/experiments/main_results.json` contains the versioned
-`paper-main-results-v1` profile with seed `42`: reference paper scores,
+`paper-main-results-v1` profile with seed `42`:
 models, split sizes, Stage0 case IDs, sampling, batches, iteration limits,
 gates, benchmark-specific prompt profiles, context handling, and SkillOpt
 parameters. Packaged prompts are indexed by digest; script defaults do not
-override the frozen profile. The paper link will be added to the README.
+override the frozen profile.
 
-Reference scores, training configuration, and selected-skill evidence are
-separate records. A new run is compared against the reference scores, not
-assumed to reproduce them.
-
-## Reference Results
-
-All values below are percentages:
-
-| Benchmark | Baseline | SkillOpt | SkillAdam |
-|---|---:|---:|---:|
-| ALFWorld | 83.6 | 87.3 | 89.6 |
-| DocVQA | 90.0 | 91.2 | 92.3 |
-| SearchQA | 72.1 | 87.3 | 87.5 |
-| SpreadsheetBench | 67.9 | 80.7 | 81.1 |
-| OfficeQA | 65.7 | 72.1 | 72.1 |
-| LMB | 67.7 | 66.9 | 67.7 |
-| DeepPlanning | 15.8 | 21.7 | 28.3 |
-
-The profile also records DeepPlanning domain results:
-
-| Method | Shopping | Travel |
-|---|---:|---:|
-| Baseline | 31.7 | 0.0 |
-| SkillOpt | 41.7 | 1.7 |
-| SkillAdam | 45.0 | 11.7 |
-
-`verify_main_results.py` recomputes metrics from complete test outputs.
-DeepPlanning weights its four scopes by 25/25/10/60 cases, not a simple
-average of scope scores.
+This profile specifies how to run experiments; it does not contain historical
+result tables. Evaluate the skills produced by your run and summarize those
+outputs. Model generation is not expected to be byte-identical between runs.
 
 ## Splits and Scopes
 
@@ -106,11 +80,11 @@ uses `gpt-4.1` on the same provider. Its E2 training framework includes:
 - Scope-specific metrics, labels, compression examples, and E2 templates.
 - Same-batch gate.
 
-The four selected DeepPlanning skills and associated evaluation artifacts
-are E1. E2 identifies the training framework; it does not change the selected
-E1 evaluation input. Across all benchmarks, Stage0 and training use the
-configuration and prompts fixed before final-skill selection. Packaged final
-skills are for artifact evaluation and quick starts, not training.
+Across all benchmarks, Stage0 and training use the configured prompts and
+parameters. The planned evaluation commands consume that run's SkillAdam
+`final_skill.md` and SkillOpt `best_skill.md`. Packaged skills remain optional
+inputs for standalone evaluation; they are not training initializers or
+evidence of a particular score.
 
 ## SkillOpt Settings
 
@@ -145,8 +119,8 @@ use 12 packaged benchmark-specific error/success analyst prompts.
 ## Prompt Integrity
 
 Prompt profiles select the packaged benchmark/scope-specific templates.
-All prompts needed for reproduction are included. Earlier profile names
-remain accepted when loading existing run configurations.
+All prompts used by this main-result command matrix are included. Earlier
+profile names remain accepted when loading existing run configurations.
 
 `skilladam/experiments/prompt_resources.json` indexes 79 SkillAdam benchmark
 prompts, six shared prompts, and 12 SkillOpt benchmark analyst prompts by
@@ -165,22 +139,49 @@ validation and rejects missing, changed, or unregistered files.
 
 ## Generate the Command Matrix
 
-Create a local configuration and fill in your external data/runtime paths:
+Use the formal backend templates, not the generic custom-run examples:
+
+| Benchmarks | Template under `configs/backends/` |
+|---|---|
+| ALFWorld, DocVQA, OfficeQA, LMB | `gpt55_main_result.example.json` |
+| SearchQA | `gpt55_searchqa_main_result.example.json` |
+| SpreadsheetBench | `gpt55_spreadsheetbench_main_result.example.json` |
+| DeepPlanning | `deepplanning_sonnet45_main_result.example.json` |
+
+The six OpenRouter configurations use temperature 1, medium reasoning with
+`extra_body={"reasoning": {"effort": "medium"}}`, and 16,384 output tokens.
+The DeepPlanning configuration uses temperature 0, omitted reasoning, and
+16,384 output tokens, with a separate Travel conversion contract. Generic
+templates such as `openai_compatible.example.json` and
+`deepplanning_official.example.json` have different defaults and are not
+substitutes for these experiment configurations.
+
+Create a local configuration and fill in your external data/runtime paths.
+Keep the formal backend template selections unchanged:
 
 ```bash
 cp configs/main_results.local.example.json configs/main_results.local.json
 ```
 
-Run preflight without a provider call:
+Before real execution, run strict preflight without a provider call:
 
 ```bash
 python scripts/preflight_main_results.py \
   --config configs/main_results.local.json \
-  --allow-missing-secrets \
   --report <preflight-report.json>
 ```
 
-The complete matrix contains ten scopes and six phases per scope: 60 commands.
+Proceed only when preflight exits successfully and reports
+`ready_for_api=true`. It checks provider/model contracts, backend request
+settings, prompt identities, data, external runtimes, and required environment
+variables. `--allow-missing-secrets` is available for an incomplete offline
+inspection, not as permission to execute. Planning or passing `--dry-run`
+does not replace this check. Use the same validated configuration and data
+paths for execution; rerun preflight if they change.
+
+The main-result matrix contains ten scopes and six commands per scope:
+one shared Stage0, two training runs, and three evaluations, totaling 60
+commands. It does not include separate ablation, transfer, or judge analyses.
 To plan one benchmark:
 
 ```bash
@@ -197,22 +198,27 @@ python scripts/reproduce_main_results.py \
 By default this prints JSON without creating outputs, loading credentials, or
 calling an API. To execute, review the model, data, concurrency, request
 settings, cost exposure, and output location, then add
-`--execute --confirm-api-costs`. Optional cumulative limits are separate from
-the frozen model/benchmark settings; they are not added by default.
+`--execute --confirm-api-costs` after strict preflight passes. Optional
+cumulative limits are separate from the frozen model/benchmark settings;
+they are not added by default.
 
-## Verify Results
+## Summarize New Results
 
 ```bash
 python scripts/verify_main_results.py \
   --output-root <completed-output-root> \
-  --max-delta-points <tolerance> \
   --report <verification-report.json>
 ```
 
-Every test case must occur exactly once, and metric fields must match the
-profile. The report separates observed values, paper references, and deltas.
-Without `--max-delta-points`, differences are reported without requiring an
-exact match to the paper.
+The verifier reads the saved evaluation metrics, checks sample counts and
+metric validity against the configured benchmark/scope, and summarizes this
+run. It does not recompute scores from individual trajectories or verify that
+every case ID appears exactly once. Inspect the saved case-level outputs for
+those checks; the verifier does not compare against historical scores.
+
+For DeepPlanning, Shopping pools L1/L2/L3 using their 25/25/10 test-case
+counts. The overall score is the mean of the Shopping and Travel domain
+scores, not an equal average of the four scopes.
 
 Configuration, prompt, checkpoint, and output checks do not establish model
 quality. Use [availability checks](../testing.md#real-api-availability-checks)
